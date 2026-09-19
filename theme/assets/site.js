@@ -1,0 +1,1 @@
+/* Legacy script from the previous theme. Mystery Flower Box uses mfb.js. */
