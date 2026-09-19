@@ -34,7 +34,7 @@
 
     <div class="header-actions">
       {%- if section.settings.cta_text != blank -%}
-        <a class="btn btn--sm" href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}">{{ section.settings.cta_text }}</a>
+        <a class="btn btn--sm" href="{{ section.settings.cta_link | default: '/collections/shop' }}">{{ section.settings.cta_text }}</a>
       {%- endif -%}
       <a class="icon-btn" href="{{ routes.search_url }}" aria-label="Search">{% render 'mfb-icon', icon: 'search' %}</a>
       <a class="icon-btn" href="{% if shop.customer_accounts_enabled %}{{ routes.account_url }}{% else %}{{ routes.root_url }}{% endif %}" aria-label="Account">{% render 'mfb-icon', icon: 'user' %}</a>

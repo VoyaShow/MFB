@@ -12,7 +12,7 @@
     </div>
     {%- if section.settings.cta_text != blank -%}
       <div class="cluster cluster--center" style="margin-top:42px">
-        <a class="btn" href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}">{{ section.settings.cta_text }}</a>
+        <a class="btn" href="{{ section.settings.cta_link | default: '/collections/shop' }}">{{ section.settings.cta_text }}</a>
       </div>
     {%- endif -%}
   </div>

@@ -10,7 +10,7 @@
   <div class="page-width">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
       <a href="{{ routes.root_url }}">Home</a> /
-      <a href="{{ routes.all_products_collection_url }}">Shop</a> /
+      <a href="/collections/shop">Shop</a> /
       <span>{{ p.title }}</span>
     </nav>
 
@@ -70,7 +70,6 @@
         </div>
 
         {%- comment -%} -------------------------------------- box builder {%- endcomment -%}
-        {%- assign variant_json = '' -%}
         {% form 'product', p, id: 'mfb-add-to-cart', novalidate: 'novalidate' %}
           <div class="builder" data-box-builder
                data-variants='[
@@ -240,7 +239,7 @@
                 <button type="button" data-qty="up" aria-label="Increase quantity">+</button>
               </div>
               <button class="btn btn--lg" type="submit" data-add-to-cart
-                      data-label-default="Add my surprise — {{ p.price | money }}"
+                      data-label-default="Add my surprise"
                       data-label-sold-out="Sold out"
                       {% unless p.available %}disabled{% endunless %}>
                 <span data-add-label>{% if p.available %}Add my surprise{% else %}Sold out{% endif %}</span>
@@ -270,7 +269,7 @@
 </div>
 
 {%- comment -%} ------------------------------------------- other two boxes {%- endcomment -%}
-{%- assign shop_collection = collections[section.settings.related_collection] -%}
+{%- assign shop_collection = section.settings.related_collection | default: collections['shop'] -%}
 {%- if shop_collection.products.size > 1 -%}
   <div class="section section--white">
     <div class="page-width">

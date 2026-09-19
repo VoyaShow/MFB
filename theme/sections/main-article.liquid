@@ -22,7 +22,7 @@
     <div class="cluster" style="margin-top:36px">
       {%- if blog.previous_article -%}<a class="btn btn--sm btn--secondary" href="{{ blog.previous_article }}">&larr; Previous</a>{%- endif -%}
       {%- if blog.next_article -%}<a class="btn btn--sm btn--secondary" href="{{ blog.next_article }}">Next &rarr;</a>{%- endif -%}
-      <a class="btn btn--sm" href="{{ routes.all_products_collection_url }}">Surprise Me!</a>
+      <a class="btn btn--sm" href="/collections/shop">Surprise Me!</a>
     </div>
 
     {%- if blog.comments_enabled? -%}

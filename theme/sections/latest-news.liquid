@@ -1,10 +1,10 @@
-{%- assign blog = blogs[section.settings.blog] -%}
+{%- assign feed = section.settings.blog | default: blogs['news'] -%}
 <section class="section section--{{ section.settings.background }}">
   <div class="page-width">
     {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading %}
-    {%- if blog.articles_count > 0 -%}
+    {%- if feed.articles_count > 0 -%}
       <div class="grid grid--3">
-        {%- for article in blog.articles limit: 3 -%}
+        {%- for article in feed.articles limit: 3 -%}
           <article class="article-card" data-reveal>
             {%- if article.image -%}
               <img src="{{ article.image | image_url: width: 800 }}" alt="{{ article.image.alt | default: article.title | escape }}" width="800" height="500" loading="lazy">
@@ -23,7 +23,7 @@
         {%- endfor -%}
       </div>
       <div class="cluster cluster--center" style="margin-top:38px">
-        <a class="btn btn--secondary" href="{{ blog.url }}">All news</a>
+        <a class="btn btn--secondary" href="{{ feed.url }}">All news</a>
       </div>
     {%- else -%}
       <p class="center muted">Publish articles to your blog and they will appear here.</p>

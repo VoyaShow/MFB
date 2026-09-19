@@ -62,7 +62,7 @@
             <div class="muted small">Delivery and any discounts are calculated at checkout.</div>
             <div class="cart-total">{{ cart.total_price | money }}</div>
             <div class="cluster" style="justify-content:flex-end;margin-top:16px">
-              <a class="btn btn--secondary" href="{{ routes.all_products_collection_url }}">Keep shopping</a>
+              <a class="btn btn--secondary" href="/collections/shop">Keep shopping</a>
               <button class="btn btn--lg" type="submit" name="checkout">Checkout</button>
             </div>
           </div>
@@ -73,7 +73,7 @@
         {% render 'mfb-icon', icon: 'gift' %}
         <h3>Your basket is empty</h3>
         <p class="muted">Three boxes. One price. Endless surprises.</p>
-        <a class="btn btn--lg" href="{{ routes.all_products_collection_url }}">Surprise Me!</a>
+        <a class="btn btn--lg" href="/collections/shop">Surprise Me!</a>
       </div>
     {%- endif -%}
   </div>

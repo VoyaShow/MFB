@@ -16,6 +16,7 @@
     {%- endif -%}
 
     {%- if blog.articles.size > 0 -%}
+      {%- paginate blog.articles by 12 -%}
       <div class="grid grid--3">
         {%- for article in blog.articles -%}
           <article class="article-card">
@@ -44,6 +45,7 @@
           {%- endfor -%}
         </nav>
       {%- endif -%}
+      {%- endpaginate -%}
     {%- else -%}
       <div class="empty-state">
         {% render 'mfb-icon', icon: 'flower' %}

@@ -6,7 +6,7 @@
     <div class="cluster cluster--center" style="margin-top:28px">
       {%- if section.settings.cta_text != blank -%}
         <a class="btn btn--lg {% if section.settings.background == 'peony' or section.settings.background == 'raspberry' %}btn--light{% endif %}"
-           href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}">{{ section.settings.cta_text }}</a>
+           href="{{ section.settings.cta_link | default: '/collections/shop' }}">{{ section.settings.cta_text }}</a>
       {%- endif -%}
       {%- if section.settings.cta2_text != blank -%}
         <a class="btn btn--ghost btn--lg" href="{{ section.settings.cta2_link }}"

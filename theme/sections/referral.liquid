@@ -2,8 +2,13 @@
   <div class="page-width">
     <div class="split {% if section.settings.reverse %}split--reverse{% endif %}">
       <div class="split__media">
-        <img src="{{ section.settings.image | image_url: width: 1200 | default: 'mfb-gallery-05.svg' | asset_url }}"
-             alt="{{ section.settings.heading | escape }}" width="900" height="900" loading="lazy">
+        {%- if section.settings.image != blank -%}
+          <img src="{{ section.settings.image | image_url: width: 1200 }}"
+               alt="{{ section.settings.heading | escape }}" width="1200" height="1200" loading="lazy">
+        {%- else -%}
+          <img src="{{ 'mfb-gallery-05.svg' | asset_url }}"
+               alt="{{ section.settings.heading | escape }}" width="900" height="900" loading="lazy">
+        {%- endif -%}
       </div>
       <div>
         <span class="eyebrow">{{ section.settings.eyebrow }}</span>

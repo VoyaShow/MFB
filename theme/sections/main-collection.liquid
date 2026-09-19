@@ -37,6 +37,7 @@
     {%- endif -%}
 
     {%- if collection.products.size > 0 -%}
+      {%- paginate collection.products by 24 -%}
       <div class="grid grid--3">
         {%- for product in collection.products -%}
           {% render 'product-card', product: product %}
@@ -53,6 +54,7 @@
           {%- if paginate.next -%}<a href="{{ paginate.next.url }}">&rarr;</a>{%- endif -%}
         </nav>
       {%- endif -%}
+      {%- endpaginate -%}
     {%- else -%}
       <div class="empty-state">
         {% render 'mfb-icon', icon: 'flower' %}

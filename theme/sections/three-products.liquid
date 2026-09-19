@@ -1,4 +1,4 @@
-{%- assign coll = collections[section.settings.collection] -%}
+{%- assign coll = section.settings.collection | default: collections['shop'] -%}
 <section class="section section--{{ section.settings.background }}">
   <div class="page-width">
     {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, subheading: section.settings.subheading %}

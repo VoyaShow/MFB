@@ -18,7 +18,7 @@
             {%- endfor -%}
           </ul>
           <a class="btn {% unless block.settings.featured %}btn--secondary{% endunless %} btn--full"
-             href="{{ block.settings.link | default: routes.all_products_collection_url }}">{{ block.settings.cta | default: 'Choose this plan' }}</a>
+             href="{{ block.settings.link | default: '/collections/shop' }}">{{ block.settings.cta | default: 'Choose this plan' }}</a>
         </div>
       {%- endfor -%}
     </div>
