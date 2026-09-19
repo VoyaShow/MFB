@@ -1,0 +1,7 @@
+{
+  "sections": {
+    "hero": { "name": "Hero" },
+    "header": { "name": "Header" },
+    "footer": { "name": "Footer" }
+  }
+}

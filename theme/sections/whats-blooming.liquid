@@ -1,0 +1,51 @@
+<section class="section section--{{ section.settings.background }}">
+  <div class="page-width">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, subheading: section.settings.subheading %}
+    <div class="bloom-strip">
+      {%- for block in section.blocks -%}
+        <div class="bloom-card" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img src="{{ block.settings.image | image_url: width: 400 }}" alt="{{ block.settings.name | escape }}" width="400" height="400" loading="lazy">
+          {%- else -%}
+            <img src="{{ block.settings.fallback | append: '.svg' | asset_url }}" alt="{{ block.settings.name | escape }}" width="600" height="600" loading="lazy">
+          {%- endif -%}
+          <strong>{{ block.settings.name }}</strong>
+          <span>{{ block.settings.note }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+    <p class="center muted small" style="margin-top:20px">{{ section.settings.footnote }}</p>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "What's blooming today",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Live from the packhouse" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What's blooming today?" },
+    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>A peek at the varieties we are packing this week. We will never tell you exactly what lands in your box.</p>" },
+    { "type": "text", "id": "footnote", "label": "Footnote", "default": "Updated every weekday morning by the packhouse team." },
+    { "type": "select", "id": "background", "label": "Background", "default": "meadow",
+      "options": [{ "value": "cream", "label": "Cream" }, { "value": "white", "label": "White" }, { "value": "blush", "label": "Blush" }, { "value": "meadow", "label": "Meadow" }, { "value": "sand", "label": "Sand" }] }
+  ],
+  "blocks": [
+    {
+      "type": "bloom",
+      "name": "Bloom",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Photo" },
+        { "type": "select", "id": "fallback", "label": "Placeholder colour", "default": "mfb-blooming-peony",
+          "options": [
+            { "value": "mfb-blooming-peony", "label": "Peony" }, { "value": "mfb-blooming-sunflower", "label": "Sunflower" },
+            { "value": "mfb-blooming-hydrangea", "label": "Hydrangea" }, { "value": "mfb-blooming-forget-me-not", "label": "Forget-me-not" },
+            { "value": "mfb-blooming-genum", "label": "Genum" }, { "value": "mfb-blooming-turf", "label": "Turf" }
+          ] },
+        { "type": "text", "id": "name", "label": "Variety", "default": "Avalanche roses" },
+        { "type": "text", "id": "note", "label": "Note", "default": "Aalsmeer · packed Tuesday" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "What's blooming today" }]
+}
+{% endschema %}

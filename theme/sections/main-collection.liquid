@@ -1,0 +1,75 @@
+<section class="section section--cream">
+  <div class="page-width">
+    <header class="section-head">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h1>{{ collection.title | default: 'Shop' }}</h1>
+      {%- if collection.description != blank -%}
+        <div class="lede rte">{{ collection.description }}</div>
+      {%- else -%}
+        <div class="lede">{{ section.settings.fallback_text }}</div>
+      {%- endif -%}
+    </header>
+
+    {%- if section.settings.show_clues -%}
+      <div class="form-card" style="margin-bottom:38px">
+        <h3 style="margin-bottom:6px">Prefer a clue before you buy?</h3>
+        <p class="muted small">These are optional. Leave everything blank for the complete mystery — that is how most people do it.</p>
+        <div class="grid grid--4" style="margin-top:18px">
+          <label class="field"><span>Box type</span>
+            <select>
+              <option>Any box</option><option>Flowers</option><option>Flowers &amp; plants</option><option>Plants</option>
+            </select>
+          </label>
+          <label class="field"><span>Main colour</span>
+            <select>
+              <option>Surprise me</option><option>Pinks</option><option>Brights</option><option>Pastels</option><option>Whites &amp; greens</option>
+            </select>
+          </label>
+          <label class="field"><span>Delivery</span>
+            <select><option>Next available</option><option>Choose a date at checkout</option></select>
+          </label>
+          <label class="field"><span>How often</span>
+            <select><option>One-off</option><option>Subscription</option></select>
+          </label>
+        </div>
+        <p class="form-note">Clues are set on the box builder when you pick a box — including the flowers and colours you would rather not receive.</p>
+      </div>
+    {%- endif -%}
+
+    {%- if collection.products.size > 0 -%}
+      <div class="grid grid--3">
+        {%- for product in collection.products -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+        <nav class="pagination" aria-label="Pagination">
+          {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">&larr;</a>{%- endif -%}
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>
+            {%- else -%}<span class="is-current">{{ part.title }}</span>{%- endif -%}
+          {%- endfor -%}
+          {%- if paginate.next -%}<a href="{{ paginate.next.url }}">&rarr;</a>{%- endif -%}
+        </nav>
+      {%- endif -%}
+    {%- else -%}
+      <div class="empty-state">
+        {% render 'mfb-icon', icon: 'flower' %}
+        <h3>Nothing here just yet</h3>
+        <p class="muted">Add your boxes to this collection and they will appear here.</p>
+        <a class="btn" href="{{ routes.root_url }}">Back home</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Three clear choices · £35 each" },
+    { "type": "text", "id": "fallback_text", "label": "Fallback description", "default": "One price, three boxes, and a surprise inside every one." },
+    { "type": "checkbox", "id": "show_clues", "label": "Show optional clue filters", "default": true }
+  ]
+}
+{% endschema %}

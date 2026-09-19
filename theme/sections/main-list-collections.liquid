@@ -1,0 +1,23 @@
+<section class="section section--cream">
+  <div class="page-width">
+    <h1>Collections</h1>
+    <div class="grid grid--3">
+      {%- for collection in collections -%}
+        <a class="shape-card" href="{{ collection.url }}" style="display:block">
+          {%- if collection.image -%}
+            <img src="{{ collection.image | image_url: width: 800 }}" alt="{{ collection.title | escape }}" width="800" height="600" loading="lazy">
+          {%- else -%}
+            <img src="{{ 'mfb-product-flower-box.png' | asset_url }}" alt="" width="800" height="800" loading="lazy">
+          {%- endif -%}
+          <div style="padding:22px">
+            <h3 style="margin:0">{{ collection.title }}</h3>
+            <p class="muted small" style="margin:6px 0 0">{{ collection.products_count }} products</p>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{ "name": "Collections list" }
+{% endschema %}

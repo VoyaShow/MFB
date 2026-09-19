@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "hero": { "type": "page-hero", "settings": { "eyebrow": "Contact", "heading": "Talk to a human", "text": "<p>Order questions, partnerships, press or something that doesn't fit a box — send it here and we'll reply, usually the same day.</p>", "background": "blush" } },
+    "form": {
+      "type": "enquiry-form",
+      "settings": { "eyebrow": "", "heading": "Send us a message", "subject": "Website contact", "cta_text": "Send message", "success_heading": "Message received.", "success_text": "We reply to every message, usually the same working day.", "note": "Prefer email? hello@mysteryflowerbox.com", "background": "white" },
+      "blocks": {
+        "f1": { "type": "select", "settings": { "label": "What is this about", "options": "My order, Subscriptions, Retail or stockists, Brand partnerships, Press, Something else", "required": true } },
+        "f2": { "type": "text", "settings": { "label": "Order number (if you have one)", "placeholder": "#1234" } },
+        "f3": { "type": "textarea", "settings": { "label": "Your message", "required": true } }
+      },
+      "block_order": ["f1", "f2", "f3"]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "eyebrow": "Quick answers", "heading": "The things people ask most", "cta_text": "Full FAQ", "cta_link": "/pages/faq", "background": "cream" },
+      "blocks": {
+        "q1": { "type": "qa", "settings": { "question": "Where is my order?", "answer": "<p>Check your dispatch email for tracking, or sign in to your account. If it's more than a day late, message us and we'll chase it.</p>" } },
+        "q2": { "type": "qa", "settings": { "question": "How do I cancel a subscription?", "answer": "<p>From your account, in two clicks — no need to contact us at all.</p>" } },
+        "q3": { "type": "qa", "settings": { "question": "My flowers didn't last.", "answer": "<p>Send a photo within 48 hours and we'll put it right under our 7-day freshness promise.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3"]
+    }
+  },
+  "order": ["hero", "form", "faq"]
+}

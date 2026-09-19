@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "hero": { "type": "page-hero", "settings": { "eyebrow": "About us", "heading": "Customers don't pick flowers. They buy the surprise.", "text": "<p>Mystery Flower Box turns surplus flowers into fun, surprise-filled boxes supporting Dutch flower growers. It's not a florist — it's a viral, social-first consumer brand built on sustainability, value and excitement.</p>", "background": "blush" } },
+    "story": { "type": "rich-text", "settings": { "heading": "Think blind boxes, mystery toys, lucky dips", "content": "<p>Every day, Dutch growers produce more beautiful flowers than the auction system can sell. Perfect stems, grown with care, that simply arrived on the wrong day or in the wrong quantity. Traditionally they were composted.</p><p>We buy them. We pack them into a box. We don't tell you what's inside.</p><p>What you get is twice the flowers for half the money, a brand-new surprise every time, and a small act of rescue in every delivery. What the grower gets is a reliable home for surplus stock. What the planet gets is a lot fewer wasted flowers.</p><p>The only thing you choose is what you'd rather not receive — allergies, pets, a colour you've never liked. Everything else stays sealed until the lid comes off.</p>", "narrow": true, "background": "white" } },
+    "props": {
+      "type": "value-props",
+      "settings": { "eyebrow": "What we are", "heading": "Fun, bold, colourful, sustainable", "columns": 4, "background": "cream" },
+      "blocks": {
+        "a": { "type": "feature", "settings": { "icon": "recycle", "heading": "Sustainable by design", "text": "Our whole business exists because flowers were being wasted. Every box is a rescue." } },
+        "b": { "type": "feature", "settings": { "icon": "sparkle", "heading": "High value", "text": "£35 buys far more flower than £35 normally does. That's the entire point." } },
+        "c": { "type": "feature", "settings": { "icon": "heart", "heading": "Social first", "text": "Our customers film the unboxing. We built the brand around that moment." } },
+        "d": { "type": "feature", "settings": { "icon": "leaf", "heading": "Grower backed", "text": "We pay Dutch growers fairly for stock that had nowhere else to go." } }
+      },
+      "block_order": ["a", "b", "c", "d"]
+    },
+    "growers": {
+      "type": "grower-stories",
+      "settings": { "eyebrow": "Meet the growers", "heading": "The people behind the surprise", "columns": 3, "background": "meadow" },
+      "blocks": {
+        "g1": { "type": "grower", "settings": { "fallback": "mfb-grower-1", "name": "De Vries Family", "region": "Aalsmeer, NL", "text": "Third-generation rose growers. What doesn't meet the auction grade goes straight into your box." } },
+        "g2": { "type": "grower", "settings": { "fallback": "mfb-grower-2", "name": "Kwekerij Bloem", "region": "Westland, NL", "text": "Tulips by the million every spring. We take the surplus the day it's cut." } },
+        "g3": { "type": "grower", "settings": { "fallback": "mfb-grower-3", "name": "Van Dijk Planten", "region": "Rijnsburg, NL", "text": "House plants grown slowly, in peat-free compost, under Dutch glass." } }
+      },
+      "block_order": ["g1", "g2", "g3"]
+    },
+    "cta": { "type": "cta-band", "settings": { "heading": "A surprise of blooms awaits", "cta_text": "Surprise Me!", "cta_link": "/collections/shop", "background": "peony" } }
+  },
+  "order": ["hero", "story", "props", "growers", "cta"]
+}

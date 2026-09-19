@@ -1,0 +1,83 @@
+<section class="section section--cream">
+  <div class="page-width">
+    <h1>Your basket</h1>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" novalidate>
+        <table class="cart-table">
+          <thead>
+            <tr><th>Box</th><th>Quantity</th><th style="text-align:right">Total</th></tr>
+          </thead>
+          <tbody>
+            {%- for item in cart.items -%}
+              <tr>
+                <td>
+                  <div class="cart-item">
+                    {%- if item.image -%}
+                      <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}" width="200" height="200">
+                    {%- endif -%}
+                    <div>
+                      <a class="cart-item__title" href="{{ item.url }}">{{ item.product.title }}</a>
+                      {%- unless item.variant.title contains 'Default' -%}
+                        <div class="muted small">{{ item.variant.title }}</div>
+                      {%- endunless -%}
+                      <div class="muted small">{{ item.final_price | money }} each</div>
+                      {%- if item.properties.size > 0 -%}
+                        <ul class="cart-item__props">
+                          {%- for prop in item.properties -%}
+                            {%- unless prop.last == blank or prop.first contains '_' -%}
+                              <li><strong>{{ prop.first }}:</strong> {{ prop.last }}</li>
+                            {%- endunless -%}
+                          {%- endfor -%}
+                        </ul>
+                      {%- endif -%}
+                      <a class="small" href="{{ item.url_to_remove }}">Remove</a>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="quantity">
+                    <button type="button" data-qty="down" aria-label="Decrease">&minus;</button>
+                    <input type="number" name="updates[]" value="{{ item.quantity }}" min="0"
+                           aria-label="Quantity for {{ item.title | escape }}">
+                    <button type="button" data-qty="up" aria-label="Increase">+</button>
+                  </div>
+                  <button class="btn btn--sm btn--ghost" type="submit" name="update" style="margin-top:10px">Update</button>
+                </td>
+                <td style="text-align:right"><strong>{{ item.final_line_price | money }}</strong></td>
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+
+        <div class="form-card" style="margin-top:28px">
+          <label class="field" style="margin:0">
+            <span>Delivery notes or a message for the packhouse</span>
+            <textarea name="note" rows="3">{{ cart.note }}</textarea>
+          </label>
+        </div>
+
+        <div class="cart-footer">
+          <div>
+            <div class="muted small">Delivery and any discounts are calculated at checkout.</div>
+            <div class="cart-total">{{ cart.total_price | money }}</div>
+            <div class="cluster" style="justify-content:flex-end;margin-top:16px">
+              <a class="btn btn--secondary" href="{{ routes.all_products_collection_url }}">Keep shopping</a>
+              <button class="btn btn--lg" type="submit" name="checkout">Checkout</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    {%- else -%}
+      <div class="empty-state">
+        {% render 'mfb-icon', icon: 'gift' %}
+        <h3>Your basket is empty</h3>
+        <p class="muted">Three boxes. One price. Endless surprises.</p>
+        <a class="btn btn--lg" href="{{ routes.all_products_collection_url }}">Surprise Me!</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{ "name": "Cart" }
+{% endschema %}

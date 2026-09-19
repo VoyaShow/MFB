@@ -1,0 +1,27 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Mystery Flower Box",
+    "theme_version": "1.0.0",
+    "theme_author": "Mystery Flower Box",
+    "theme_documentation_url": "https://mysteryflowerbox.com",
+    "theme_support_url": "https://mysteryflowerbox.com/pages/contact"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      { "type": "paragraph", "content": "Colours follow the Mystery Flower Box brand guidelines, section 2.4. Never tint a brand colour below 50%." },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" },
+      { "type": "image_picker", "id": "social_image", "label": "Social sharing image" },
+      { "type": "color", "id": "colour_primary", "label": "Peony (primary)", "default": "#FF80C3" },
+      { "type": "color", "id": "colour_accent", "label": "Raspberry (accent)", "default": "#AF0E63" },
+      { "type": "color", "id": "colour_ink", "label": "Charcoal (text)", "default": "#414141" }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      { "type": "checkbox", "id": "show_cart_note", "label": "Show a note field in the basket", "default": true }
+    ]
+  }
+]

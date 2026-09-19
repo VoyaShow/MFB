@@ -1,0 +1,94 @@
+<footer class="site-footer">
+  <div class="page-width">
+    <div class="site-footer__grid">
+      <div>
+        <div class="site-footer__logo">
+          {%- if section.settings.logo != blank -%}
+            <img src="{{ section.settings.logo | image_url: width: 400 }}" alt="{{ shop.name | escape }}" width="400" height="195" loading="lazy">
+          {%- else -%}
+            <img src="{{ 'mfb-logo-white.png' | asset_url }}" alt="{{ shop.name | escape }}" width="400" height="195" loading="lazy">
+          {%- endif -%}
+        </div>
+        <p>{{ section.settings.blurb }}</p>
+        <div class="social" style="margin-top:18px">
+          {%- if section.settings.instagram != blank -%}<a href="{{ section.settings.instagram }}" aria-label="Instagram">{% render 'mfb-icon', icon: 'instagram' %}</a>{%- endif -%}
+          {%- if section.settings.tiktok != blank -%}<a href="{{ section.settings.tiktok }}" aria-label="TikTok">{% render 'mfb-icon', icon: 'tiktok' %}</a>{%- endif -%}
+          {%- if section.settings.facebook != blank -%}<a href="{{ section.settings.facebook }}" aria-label="Facebook">{% render 'mfb-icon', icon: 'facebook' %}</a>{%- endif -%}
+          {%- if section.settings.pinterest != blank -%}<a href="{{ section.settings.pinterest }}" aria-label="Pinterest">{% render 'mfb-icon', icon: 'pinterest' %}</a>{%- endif -%}
+        </div>
+      </div>
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'menu' -%}
+          <div {{ block.shopify_attributes }}>
+            <h4>{{ block.settings.heading }}</h4>
+            <ul>
+              {%- for link in linklists[block.settings.menu].links -%}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- elsif block.type == 'newsletter' -%}
+          <div {{ block.shopify_attributes }}>
+            <h4>{{ block.settings.heading }}</h4>
+            <p class="small">{{ block.settings.text }}</p>
+            {% form 'customer', id: 'footer-newsletter' %}
+              {%- if form.posted_successfully? -%}
+                <p class="small"><strong>You are on the list. Watch your inbox 🌸</strong></p>
+              {%- else -%}
+                <input type="hidden" name="contact[tags]" value="newsletter,footer">
+                <input type="email" name="contact[email]" placeholder="you@example.com"
+                       aria-label="Email address" required>
+                <button class="btn btn--sm btn--full" type="submit" style="margin-top:10px">Join the club</button>
+              {%- endif -%}
+            {% endform %}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ section.settings.legal }}</span>
+      <span class="payment-icons">
+        {%- for type in shop.enabled_payment_types -%}
+          {{ type | payment_type_svg_tag: class: 'payment-icon' }}
+        {%- endfor -%}
+      </span>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Footer logo (white version)" },
+    { "type": "textarea", "id": "blurb", "label": "About text", "default": "Mystery Flower Box turns surplus Dutch flowers into surprise-filled boxes. Less waste, more joy, one clear price." },
+    { "type": "url", "id": "instagram", "label": "Instagram" },
+    { "type": "url", "id": "tiktok", "label": "TikTok" },
+    { "type": "url", "id": "facebook", "label": "Facebook" },
+    { "type": "url", "id": "pinterest", "label": "Pinterest" },
+    { "type": "text", "id": "legal", "label": "Legal line", "default": "All rights reserved." }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu column",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Shop" },
+        { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Never miss a drop" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Early access to limited boxes, Golden Ticket news and 10% off your first surprise." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Footer" }]
+}
+{% endschema %}

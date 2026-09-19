@@ -1,0 +1,50 @@
+<section class="section section--{{ section.settings.background }}">
+  <div class="page-width">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, subheading: section.settings.subheading %}
+    <div class="grid grid--{{ section.settings.columns }}">
+      {%- for block in section.blocks -%}
+        <article class="shape-card" {{ block.shopify_attributes }} data-reveal>
+          {%- if block.settings.image != blank -%}
+            <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.name | escape }}" width="800" height="800" loading="lazy">
+          {%- else -%}
+            <img src="{{ block.settings.fallback | append: '.svg' | asset_url }}" alt="{{ block.settings.name | escape }}" width="700" height="700" loading="lazy">
+          {%- endif -%}
+          <div style="padding:24px">
+            <span class="pill pill--turf">{{ block.settings.region }}</span>
+            <h3 style="margin-top:14px">{{ block.settings.name }}</h3>
+            <p class="muted">{{ block.settings.text }}</p>
+            {%- if block.settings.link != blank -%}
+              <a class="btn btn--sm btn--secondary" href="{{ block.settings.link }}">Read their story</a>
+            {%- endif -%}
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Grower stories",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Meet the growers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The people behind the surprise" },
+    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>Every box starts in a Dutch greenhouse with a family that has been growing for generations.</p>" },
+    { "type": "range", "id": "columns", "min": 2, "max": 4, "step": 1, "label": "Columns", "default": 3 },
+    { "type": "select", "id": "background", "label": "Background", "default": "meadow",
+      "options": [{ "value": "cream", "label": "Cream" }, { "value": "white", "label": "White" }, { "value": "meadow", "label": "Meadow" }, { "value": "blush", "label": "Blush" }] }
+  ],
+  "blocks": [
+    { "type": "grower", "name": "Grower", "settings": [
+      { "type": "image_picker", "id": "image", "label": "Portrait" },
+      { "type": "select", "id": "fallback", "label": "Placeholder portrait", "default": "mfb-grower-1",
+        "options": [{ "value": "mfb-grower-1", "label": "Portrait 1" }, { "value": "mfb-grower-2", "label": "Portrait 2" }, { "value": "mfb-grower-3", "label": "Portrait 3" }] },
+      { "type": "text", "id": "name", "label": "Name", "default": "De Vries Family" },
+      { "type": "text", "id": "region", "label": "Region", "default": "Aalsmeer, NL" },
+      { "type": "textarea", "id": "text", "label": "Text", "default": "Third-generation rose growers. What does not meet the auction grade goes straight into your box." },
+      { "type": "url", "id": "link", "label": "Link" }
+    ] }
+  ],
+  "presets": [{ "name": "Grower stories" }]
+}
+{% endschema %}

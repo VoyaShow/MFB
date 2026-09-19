@@ -1,0 +1,45 @@
+<section class="section section--{{ section.settings.background }}">
+  <div class="page-width">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, subheading: section.settings.subheading %}
+    <div class="grid grid--{{ section.blocks.size | at_most: 4 }}">
+      {%- for block in section.blocks -%}
+        <div class="step" {{ block.shopify_attributes }} data-reveal>
+          <div class="step__num">{{ forloop.index }}</div>
+          <h3>{{ block.settings.heading }}</h3>
+          <p class="muted">{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.cta_text != blank -%}
+      <div class="cluster cluster--center" style="margin-top:42px">
+        <a class="btn" href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}">{{ section.settings.cta_text }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "How it works",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How it works" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Four steps to a very good day" },
+    { "type": "richtext", "id": "subheading", "label": "Subheading" },
+    { "type": "text", "id": "cta_text", "label": "Button label", "default": "Build my box" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+    { "type": "select", "id": "background", "label": "Background", "default": "white",
+      "options": [{ "value": "cream", "label": "Cream" }, { "value": "white", "label": "White" }, { "value": "blush", "label": "Blush" }, { "value": "mist", "label": "Mist" }] }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Pick your box" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Flowers, plants, or both. Every box is £35." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "How it works" }]
+}
+{% endschema %}

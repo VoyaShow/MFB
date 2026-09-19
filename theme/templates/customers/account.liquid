@@ -1,0 +1,65 @@
+<section class="section section--cream">
+  <div class="page-width">
+    <h1>Hello{% if customer.first_name != blank %}, {{ customer.first_name }}{% endif %}</h1>
+
+    <div class="grid grid--4" style="margin-bottom:34px">
+      <div class="feature"><div class="stat__value">{{ customer.orders_count }}</div><div class="stat__label">boxes ordered</div></div>
+      <div class="feature"><div class="stat__value">{{ customer.total_spent | money_without_currency | times: 1 | round }}</div><div class="stat__label">loyalty points</div></div>
+      <div class="feature"><div class="stat__value">0</div><div class="stat__label">referrals</div></div>
+      <div class="feature"><div class="stat__value">0</div><div class="stat__label">Golden Tickets</div></div>
+    </div>
+
+    <div class="grid grid--2">
+      <div>
+        <h2>Your orders</h2>
+        {%- if customer.orders.size > 0 -%}
+          <table class="cart-table">
+            <thead><tr><th>Order</th><th>Date</th><th>Status</th><th style="text-align:right">Total</th></tr></thead>
+            <tbody>
+              {%- for order in customer.orders -%}
+                <tr>
+                  <td><a href="{{ order.customer_url }}">{{ order.name }}</a></td>
+                  <td>{{ order.created_at | date: '%-d %b %Y' }}</td>
+                  <td>{{ order.fulfillment_status_label }}</td>
+                  <td style="text-align:right">{{ order.total_price | money }}</td>
+                </tr>
+              {%- endfor -%}
+            </tbody>
+          </table>
+        {%- else -%}
+          <div class="empty-state" style="padding-block:30px">
+            {% render 'mfb-icon', icon: 'gift' %}
+            <p class="muted">No orders yet.</p>
+            <a class="btn" href="{{ routes.all_products_collection_url }}">Surprise Me!</a>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="stack">
+        <div class="form-card">
+          <h3>Your no-list</h3>
+          <p class="muted small">The colours and varieties we leave out of every box. Set these on the box builder when you order — they carry through to your subscription.</p>
+          <a class="btn btn--sm btn--secondary" href="{{ routes.all_products_collection_url }}">Update on the box builder</a>
+        </div>
+        <div class="form-card">
+          <h3>Your referral link</h3>
+          <div class="cluster">
+            <code style="flex:1;min-width:200px;word-break:break-all">{{ shop.url }}?ref={{ customer.id }}</code>
+            <button class="btn btn--sm" type="button" data-copy="{{ shop.url }}?ref={{ customer.id }}">Copy</button>
+          </div>
+          <p class="form-note">£10 off for them, a free box for you after three.</p>
+        </div>
+        <div class="form-card">
+          <h3>Default address</h3>
+          {%- if customer.default_address -%}
+            <p class="small">{{ customer.default_address | format_address }}</p>
+          {%- else -%}
+            <p class="muted small">No address saved yet.</p>
+          {%- endif -%}
+          <a class="btn btn--sm btn--secondary" href="{{ routes.account_addresses_url }}">Manage addresses</a>
+        </div>
+        <p><a href="{{ routes.account_logout_url }}">Sign out</a></p>
+      </div>
+    </div>
+  </div>
+</section>

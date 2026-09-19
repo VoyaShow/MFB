@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "hero": { "type": "page-hero", "settings": { "eyebrow": "Customer gallery", "heading": "#MysteryFlowerBox", "text": "<p>Every box that lands somewhere lovely, shared by the people who opened it. Tag us and you could land here — and in the Golden Ticket draw.</p>", "cta_text": "Upload your photo", "cta_link": "#upload", "background": "blush" } },
+    "gallery": {
+      "type": "gallery",
+      "settings": { "eyebrow": "", "heading": "", "show_filters": true, "background": "white" },
+      "blocks": {
+        "g1": { "type": "photo", "settings": { "name": "Jess", "location": "Leeds", "caption": "Third box and still smiling", "category": "In the home", "box_type": "Mystery Flower Box", "likes": "412", "comments": "23" } },
+        "g2": { "type": "photo", "settings": { "name": "Marcus", "location": "Cardiff", "caption": "Kitchen window upgrade", "category": "In the home", "box_type": "Mystery Plant Box", "likes": "298", "comments": "11" } },
+        "g3": { "type": "photo", "settings": { "name": "Amira", "location": "London", "caption": "Doorstep unboxing, 8am", "category": "Unboxings", "box_type": "Mystery Flower Box", "likes": "1,204", "comments": "88" } },
+        "g4": { "type": "photo", "settings": { "name": "Tom", "location": "Sheffield", "caption": "Desk therapy", "category": "In the home", "box_type": "Mystery Flower Box", "likes": "176", "comments": "9" } },
+        "g5": { "type": "photo", "settings": { "name": "Nadia", "location": "Belfast", "caption": "Her 40th, and she had no idea", "category": "Occasions", "box_type": "Mystery Flower & Plant Box", "likes": "846", "comments": "51" } },
+        "g6": { "type": "photo", "settings": { "name": "Ollie", "location": "Brighton", "caption": "The shelf is officially full", "category": "Plants", "box_type": "Mystery Plant Box", "likes": "523", "comments": "34" } },
+        "g7": { "type": "photo", "settings": { "name": "Priya", "location": "Birmingham", "caption": "Golden Ticket! A year of boxes", "category": "Golden Tickets", "box_type": "Mystery Flower Box", "likes": "2,108", "comments": "167" } },
+        "g8": { "type": "photo", "settings": { "name": "Cara", "location": "Norwich", "caption": "Mother's Day sorted", "category": "Occasions", "box_type": "Mystery Flower Box", "likes": "689", "comments": "40" } },
+        "g9": { "type": "photo", "settings": { "name": "Ben", "location": "Exeter", "caption": "Anniversary, 11 years", "category": "Occasions", "box_type": "Mystery Flower Box", "likes": "331", "comments": "18" } },
+        "g10": { "type": "photo", "settings": { "name": "Hannah", "location": "York", "caption": "The cat approves (pet-safe box)", "category": "In the home", "box_type": "Mystery Plant Box", "likes": "907", "comments": "62" } },
+        "g11": { "type": "photo", "settings": { "name": "Ola", "location": "Nottingham", "caption": "Unboxing with the kids", "category": "Unboxings", "box_type": "Mystery Flower & Plant Box", "likes": "455", "comments": "27" } },
+        "g12": { "type": "photo", "settings": { "name": "Ruth", "location": "Aberdeen", "caption": "Second Golden Ticket in our office!", "category": "Golden Tickets", "box_type": "Mystery Flower Box", "likes": "1,533", "comments": "104" } }
+      },
+      "block_order": ["g1", "g2", "g3", "g4", "g5", "g6", "g7", "g8", "g9", "g10", "g11", "g12"]
+    },
+    "reactions": {
+      "type": "reactions",
+      "settings": { "eyebrow": "Reactions", "heading": "Caught on camera", "columns": 3, "background": "mist" },
+      "blocks": {
+        "r1": { "type": "reaction", "settings": { "emoji": "😍", "rating": 5, "quote": "I actually squealed. My husband now thinks I've lost it — worth every penny.", "name": "Sophie M.", "location": "Manchester", "box": "Mystery Flower Box" } },
+        "r2": { "type": "reaction", "settings": { "emoji": "🤯", "rating": 5, "quote": "I ticked 'no lilies' because of the cat and they got it spot on. Twenty-three stems for £35.", "name": "Dan & Priya", "location": "Bristol", "box": "Mystery Flower & Plant Box" } },
+        "r3": { "type": "reaction", "settings": { "emoji": "🥹", "rating": 5, "quote": "Sent one to my mum for no reason. She rang me crying. Now it's a monthly thing.", "name": "Leanne K.", "location": "Glasgow", "box": "Mystery Flower Box" } }
+      },
+      "block_order": ["r1", "r2", "r3"]
+    },
+    "upload": {
+      "type": "enquiry-form",
+      "settings": { "eyebrow": "Join the wall", "heading": "Upload your unboxing", "subheading": "<p>Send us your photo or reel and we'll add it to the gallery. Every upload earns 50 loyalty points and an entry into this month's draw.</p>", "subject": "Gallery upload", "cta_text": "Send my photo", "success_heading": "Got it — thank you!", "success_text": "Our team reviews uploads daily. We'll email you when yours goes live.", "note": "By uploading you give us permission to share your photo on our website and social channels. We'll always credit you by first name and town.", "background": "cream" },
+      "blocks": {
+        "f1": { "type": "text", "settings": { "label": "Town or city", "placeholder": "Leeds", "required": true } },
+        "f2": { "type": "select", "settings": { "label": "Which box", "options": "Mystery Flower Box, Mystery Flower & Plant Box, Mystery Plant Box", "required": true } },
+        "f3": { "type": "text", "settings": { "label": "Instagram or TikTok handle", "placeholder": "@yourhandle" } },
+        "f4": { "type": "text", "settings": { "label": "Link to your photo or reel", "placeholder": "Paste a link — or reply to our email with the file", "required": true } },
+        "f5": { "type": "textarea", "settings": { "label": "Caption", "placeholder": "Tell us about the moment" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5"]
+    },
+    "cta": { "type": "cta-band", "settings": { "heading": "Want to be on this wall?", "text": "<p>Order a box, open it on camera, tag #MysteryFlowerBox.</p>", "cta_text": "Surprise Me!", "cta_link": "/collections/shop", "background": "peony" } }
+  },
+  "order": ["hero", "gallery", "reactions", "upload", "cta"]
+}

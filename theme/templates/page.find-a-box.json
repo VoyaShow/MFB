@@ -1,0 +1,44 @@
+{
+  "sections": {
+    "hero": { "type": "page-hero", "settings": { "eyebrow": "Find a box", "heading": "Where to grab a box today", "text": "<p>Our boxes land in supermarkets and independents across the UK. Bought one in store? Register it to unlock your care guide, loyalty points and a competition entry.</p>", "background": "blush" } },
+    "locator": {
+      "type": "store-locator",
+      "settings": { "eyebrow": "", "heading": "", "background": "cream" },
+      "blocks": {
+        "l1": { "type": "location", "settings": { "name": "Greenfields Supermarket", "address": "14 Briggate", "town": "Leeds", "postcode": "LS1 6BR", "hours": "Mon–Sat 7am–10pm · Sun 10am–4pm", "stock": "high", "map_x": 52, "map_y": 38 } },
+        "l2": { "type": "location", "settings": { "name": "Northside Food Hall", "address": "3 Market Street", "town": "Manchester", "postcode": "M1 1PT", "hours": "Mon–Sun 8am–9pm", "stock": "low", "map_x": 44, "map_y": 45 } },
+        "l3": { "type": "location", "settings": { "name": "Riverside Grocers", "address": "88 Queen Street", "town": "Cardiff", "postcode": "CF10 2GB", "hours": "Mon–Sat 8am–8pm · Sun 11am–5pm", "stock": "high", "map_x": 30, "map_y": 66 } },
+        "l4": { "type": "location", "settings": { "name": "The Corner Market", "address": "201 Byres Road", "town": "Glasgow", "postcode": "G12 8UD", "hours": "Mon–Sun 7am–11pm", "stock": "out", "map_x": 34, "map_y": 22 } },
+        "l5": { "type": "location", "settings": { "name": "Eastgate Fresh", "address": "5 Gentleman's Walk", "town": "Norwich", "postcode": "NR2 1NA", "hours": "Mon–Sat 8am–7pm", "stock": "high", "map_x": 76, "map_y": 52 } },
+        "l6": { "type": "location", "settings": { "name": "Harbour Stores", "address": "22 North Street", "town": "Brighton", "postcode": "BN1 1EB", "hours": "Mon–Sun 8am–9pm", "stock": "high", "map_x": 63, "map_y": 78 } },
+        "l7": { "type": "location", "settings": { "name": "Cathedral Provisions", "address": "9 Grainger Street", "town": "Newcastle", "postcode": "NE1 5JE", "hours": "Mon–Sat 7am–9pm", "stock": "low", "map_x": 50, "map_y": 25 } },
+        "l8": { "type": "location", "settings": { "name": "Southbank Food Co.", "address": "44 Lower Marsh", "town": "London", "postcode": "SE1 7RG", "hours": "Mon–Sun 7am–10pm", "stock": "high", "map_x": 64, "map_y": 68 } }
+      },
+      "block_order": ["l1", "l2", "l3", "l4", "l5", "l6", "l7", "l8"]
+    },
+    "qr": {
+      "type": "value-props",
+      "settings": { "eyebrow": "The QR code on your box", "heading": "One scan, a lot of extras", "columns": 4, "background": "white" },
+      "blocks": {
+        "a": { "type": "feature", "settings": { "icon": "qr", "heading": "Register your box", "text": "Turn a supermarket purchase into loyalty points and a competition entry." } },
+        "b": { "type": "feature", "settings": { "icon": "leaf", "heading": "Flower care guide", "text": "A short video showing exactly how to make your stems last." } },
+        "c": { "type": "feature", "settings": { "icon": "flower", "heading": "Meet the grower", "text": "Find out which Dutch nursery grew what's in your hands." } },
+        "d": { "type": "feature", "settings": { "icon": "gift", "heading": "Partner offers", "text": "Unlock this month's treats from the brands inside your box." } }
+      },
+      "block_order": ["a", "b", "c", "d"]
+    },
+    "retailer": {
+      "type": "enquiry-form",
+      "settings": { "eyebrow": "For retailers", "heading": "Stock Mystery Flower Box", "subheading": "<p>High rotation, strong margin, and a product customers photograph. Tell us about your stores and we'll send the trade pack.</p>", "subject": "Retail stockist enquiry", "cta_text": "Request the trade pack", "success_heading": "Thanks — trade pack on its way.", "success_text": "Our retail team will be in touch within one working day.", "background": "mist" },
+      "blocks": {
+        "f1": { "type": "text", "settings": { "label": "Number of stores", "placeholder": "e.g. 12", "required": true } },
+        "f2": { "type": "text", "settings": { "label": "Regions covered", "placeholder": "e.g. North West and Yorkshire" } },
+        "f3": { "type": "select", "settings": { "label": "Weekly volume expected", "options": "Under 50 boxes, 50–250 boxes, 250–1,000 boxes, 1,000+ boxes", "required": true } },
+        "f4": { "type": "textarea", "settings": { "label": "Anything else we should know" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4"]
+    },
+    "cta": { "type": "cta-band", "settings": { "heading": "Can't get to a store?", "text": "<p>We'll bring the surprise to your door instead.</p>", "cta_text": "Order online", "cta_link": "/collections/shop", "background": "peony" } }
+  },
+  "order": ["hero", "locator", "qr", "retailer", "cta"]
+}

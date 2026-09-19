@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "hero": { "type": "page-hero", "settings": { "eyebrow": "Refer a friend", "heading": "Give £10, get a free box", "text": "<p>Share your link, your friend saves £10 on their first surprise, and after three referrals your next box is on us.</p>", "cta_text": "Sign in to get my link", "cta_link": "/account/login", "background": "sand" } },
+    "referral": {
+      "type": "referral",
+      "settings": { "eyebrow": "", "heading": "How it works", "text": "<p>Sign in to your account and we'll generate your personal link. Share it however you like — message, email, or your stories. We track everything in your referral dashboard.</p>", "sample_link": "mysteryflowerbox.com/r/your-name", "note": "Sign in to your account to get your personal link and track your rewards.", "cta_text": "Sign in", "cta_link": "/account/login", "reverse": true, "background": "white" },
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "value": "£10", "label": "off for your friend" } },
+        "s2": { "type": "stat", "settings": { "value": "3", "label": "referrals to a free box" } },
+        "s3": { "type": "stat", "settings": { "value": "18k", "label": "boxes given free so far" } },
+        "s4": { "type": "stat", "settings": { "value": "∞", "label": "referrals allowed" } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"]
+    },
+    "loyalty": {
+      "type": "value-props",
+      "settings": { "eyebrow": "Loyalty", "heading": "Points for everything you already do", "columns": 4, "background": "cream" },
+      "blocks": {
+        "a": { "type": "feature", "settings": { "icon": "gift", "heading": "Buy a box", "text": "35 points every time — one point per pound." } },
+        "b": { "type": "feature", "settings": { "icon": "star", "heading": "Leave a review", "text": "50 points, and more if you add a photo." } },
+        "c": { "type": "feature", "settings": { "icon": "heart", "heading": "Upload to the gallery", "text": "50 points and an entry into the monthly draw." } },
+        "d": { "type": "feature", "settings": { "icon": "sparkle", "heading": "Refer a friend", "text": "250 points when they open their first box." } }
+      },
+      "block_order": ["a", "b", "c", "d"]
+    },
+    "rewards": {
+      "type": "subscription-plans",
+      "settings": { "eyebrow": "Spend them", "heading": "What points get you", "subheading": "", "background": "white" },
+      "blocks": {
+        "r1": { "type": "plan", "settings": { "name": "250 points", "price": "£5 off", "cadence": "any box", "perks": "Applied at checkout\nStacks with other offers\nNever expires", "cta": "Spend points", "link": "/account" } },
+        "r2": { "type": "plan", "settings": { "name": "500 points", "price": "Free delivery", "cadence": "for three months", "perks": "Automatic at checkout\nWorks with subscriptions", "cta": "Spend points", "link": "/account" } },
+        "r3": { "type": "plan", "settings": { "name": "1,000 points", "price": "A free box", "cadence": "any of the three", "perks": "Your exclusions still apply\nSend it to someone else if you like", "cta": "Spend points", "link": "/account", "featured": true } },
+        "r4": { "type": "plan", "settings": { "name": "2,500 points", "price": "Limited edition", "cadence": "members only", "perks": "Seasonal one-off boxes\nNever sold publicly", "cta": "Spend points", "link": "/account" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4"]
+    },
+    "cta": { "type": "cta-band", "settings": { "heading": "Start earning today", "cta_text": "Surprise Me!", "cta_link": "/collections/shop", "cta2_text": "Create an account", "cta2_link": "/account/register", "background": "peony" } }
+  },
+  "order": ["hero", "referral", "loyalty", "rewards", "cta"]
+}

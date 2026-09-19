@@ -1,0 +1,78 @@
+{%- comment -%}
+  Customer reactions - the unboxing moment. Video where available, quote card otherwise.
+{%- endcomment -%}
+<section class="section section--{{ section.settings.background }}">
+  <div class="page-width">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, subheading: section.settings.subheading %}
+
+    <div class="grid grid--{{ section.settings.columns }}">
+      {%- for block in section.blocks -%}
+        <article class="reaction-card" {{ block.shopify_attributes }} data-reveal>
+          <div class="reaction-card__media">
+            {%- if block.settings.video != blank -%}
+              {{ block.settings.video | external_video_tag: loading: 'lazy', class: 'reaction-card__video' }}
+            {%- else -%}
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.name | escape }}" width="800" height="1000" loading="lazy">
+              {%- else -%}
+                {%- assign idx = forloop.index0 | modulo: 12 | plus: 1 -%}
+                {%- capture fallback -%}mfb-gallery-{% if idx < 10 %}0{% endif %}{{ idx }}.svg{%- endcapture -%}
+                <img src="{{ fallback | asset_url }}" alt="{{ block.settings.name | escape }}" width="900" height="900" loading="lazy">
+              {%- endif -%}
+            {%- endif -%}
+            {%- if block.settings.emoji != blank -%}
+              <span class="reaction-card__emoji" aria-hidden="true">{{ block.settings.emoji }}</span>
+            {%- endif -%}
+          </div>
+          <div class="reaction-card__quote">
+            {% render 'stars', rating: block.settings.rating %}
+            <p style="margin-top:10px">&ldquo;{{ block.settings.quote }}&rdquo;</p>
+            <div class="reaction-card__who">
+              {{ block.settings.name }}
+              <small>{{ block.settings.location }}{% if block.settings.box != blank %} · {{ block.settings.box }}{% endif %}</small>
+            </div>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.cta_text != blank -%}
+      <div class="cluster cluster--center" style="margin-top:42px">
+        <a class="btn btn--secondary" href="{{ section.settings.cta_link }}">{{ section.settings.cta_text }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Customer reactions",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Real reactions" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The moment the lid comes off" },
+    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>Thousands of unboxings, filmed on kitchen tables and doorsteps across the country.</p>" },
+    { "type": "range", "id": "columns", "min": 2, "max": 4, "step": 1, "label": "Columns", "default": 3 },
+    { "type": "text", "id": "cta_text", "label": "Button label", "default": "See the whole gallery" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+    { "type": "select", "id": "background", "label": "Background", "default": "mist",
+      "options": [{ "value": "cream", "label": "Cream" }, { "value": "white", "label": "White" }, { "value": "blush", "label": "Blush" }, { "value": "mist", "label": "Mist" }, { "value": "sand", "label": "Sand" }] }
+  ],
+  "blocks": [
+    {
+      "type": "reaction",
+      "name": "Reaction",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Photo" },
+        { "type": "video_url", "id": "video", "label": "Video", "accept": ["youtube", "vimeo"] },
+        { "type": "text", "id": "emoji", "label": "Reaction emoji", "default": "😍" },
+        { "type": "range", "id": "rating", "min": 1, "max": 5, "step": 1, "label": "Rating", "default": 5 },
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "I actually squealed. My husband thinks I've lost it." },
+        { "type": "text", "id": "name", "label": "Name", "default": "Sophie M." },
+        { "type": "text", "id": "location", "label": "Location", "default": "Manchester" },
+        { "type": "text", "id": "box", "label": "Box type", "default": "Mystery Flower Box" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Customer reactions" }]
+}
+{% endschema %}

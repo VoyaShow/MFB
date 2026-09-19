@@ -1,0 +1,102 @@
+<section class="section section--{{ section.settings.background }}" data-locator>
+  <div class="page-width">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, subheading: section.settings.subheading %}
+
+    <div class="locator">
+      <div>
+        <label class="field">
+          <span>Search by town, postcode or retailer</span>
+          <input type="search" data-locator-search placeholder="e.g. Leeds or LS1" aria-label="Search stockists">
+        </label>
+        <div class="locator__list">
+          {%- for block in section.blocks -%}
+            <button class="locator__item" type="button" data-locator-item="{{ block.id }}"
+                    data-search="{{ block.settings.name | escape }} {{ block.settings.address | escape }} {{ block.settings.postcode | escape }} {{ block.settings.town | escape }}"
+                    {{ block.shopify_attributes }}>
+              <h4>{{ block.settings.name }}</h4>
+              <p>{{ block.settings.address }}{% if block.settings.postcode != blank %}, {{ block.settings.postcode }}{% endif %}</p>
+              <p class="small">{{ block.settings.hours }}</p>
+              <span class="locator__stock" data-level="{{ block.settings.stock }}">
+                {%- case block.settings.stock -%}
+                  {%- when 'high' -%}Boxes in stock today
+                  {%- when 'low' -%}Low stock — call ahead
+                  {%- else -%}Sold out, restocking soon
+                {%- endcase -%}
+              </span>
+              {%- if block.settings.directions != blank -%}
+                <span style="display:block;margin-top:10px"><span class="btn btn--sm btn--secondary">Get directions</span></span>
+              {%- endif -%}
+            </button>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <div class="locator__map">
+        <img src="{{ 'mfb-pattern.svg' | asset_url }}" alt="" aria-hidden="true"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35">
+        {%- for block in section.blocks -%}
+          <button class="locator__pin" type="button" data-locator-pin="{{ block.id }}"
+                  style="left:{{ block.settings.map_x }}%;top:{{ block.settings.map_y }}%"
+                  aria-label="{{ block.settings.name | escape }}">
+            {% render 'mfb-icon', icon: 'pin' %}
+            <span>{{ block.settings.town }}</span>
+          </button>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="form-card" style="margin-top:40px">
+      <h3>{{ section.settings.register_heading }}</h3>
+      <p class="muted">{{ section.settings.register_text }}</p>
+      {% form 'contact', id: 'retail-register' %}
+        {%- if form.posted_successfully? -%}
+          <div class="form-success"><strong>Thanks — box registered.</strong> Check your email for your flower care guide and your competition entry.</div>
+        {%- else -%}
+          {%- if form.errors -%}<div class="form-error">{{ form.errors | default_errors }}</div>{%- endif -%}
+          <input type="hidden" name="contact[subject]" value="Retail box registration">
+          <div class="grid grid--2">
+            <label class="field"><span>Your name</span><input type="text" name="contact[name]" required></label>
+            <label class="field"><span>Email address</span><input type="email" name="contact[email]" required></label>
+            <label class="field"><span>Box code (on the QR label)</span><input type="text" name="contact[box_code]" placeholder="MFB-000000"></label>
+            <label class="field"><span>Where did you buy it?</span><input type="text" name="contact[retailer]" placeholder="Store and town"></label>
+          </div>
+          <button class="btn" type="submit">Register my box</button>
+        {%- endif -%}
+      {% endform %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Find a box",
+  "max_blocks": 30,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Find a box" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Where to grab a box today" },
+    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>Our boxes land in supermarkets and independents across the UK. Stock moves fast — availability is refreshed daily.</p>" },
+    { "type": "text", "id": "register_heading", "label": "Register heading", "default": "Bought a box in store?" },
+    { "type": "text", "id": "register_text", "label": "Register text", "default": "Register it here to unlock your flower care guide, enter this month's competition and collect loyalty points." },
+    { "type": "select", "id": "background", "label": "Background", "default": "cream",
+      "options": [{ "value": "cream", "label": "Cream" }, { "value": "white", "label": "White" }, { "value": "blush", "label": "Blush" }, { "value": "mist", "label": "Mist" }] }
+  ],
+  "blocks": [
+    {
+      "type": "location",
+      "name": "Stockist",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Example Supermarket" },
+        { "type": "text", "id": "address", "label": "Address", "default": "1 High Street" },
+        { "type": "text", "id": "town", "label": "Town", "default": "Leeds" },
+        { "type": "text", "id": "postcode", "label": "Postcode", "default": "LS1 1AA" },
+        { "type": "text", "id": "hours", "label": "Opening hours", "default": "Mon–Sat 7am–10pm · Sun 10am–4pm" },
+        { "type": "select", "id": "stock", "label": "Stock level", "default": "high",
+          "options": [{ "value": "high", "label": "In stock" }, { "value": "low", "label": "Low" }, { "value": "out", "label": "Sold out" }] },
+        { "type": "url", "id": "directions", "label": "Directions link" },
+        { "type": "range", "id": "map_x", "min": 4, "max": 96, "step": 1, "unit": "%", "label": "Map position X", "default": 50 },
+        { "type": "range", "id": "map_y", "min": 4, "max": 96, "step": 1, "unit": "%", "label": "Map position Y", "default": 50 }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Find a box" }]
+}
+{% endschema %}

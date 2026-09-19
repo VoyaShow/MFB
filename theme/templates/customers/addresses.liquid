@@ -1,0 +1,37 @@
+<section class="section section--cream">
+  <div class="page-width" style="max-width:820px">
+    <nav class="breadcrumbs"><a href="{{ routes.account_url }}">Account</a> / <span>Addresses</span></nav>
+    <h1>Your addresses</h1>
+
+    <div class="form-card" style="margin-bottom:28px">
+      <h3>Add an address</h3>
+      {% form 'customer_address', customer.new_address %}
+        <div class="grid grid--2">
+          <label class="field"><span>First name</span><input type="text" name="address[first_name]"></label>
+          <label class="field"><span>Last name</span><input type="text" name="address[last_name]"></label>
+        </div>
+        <label class="field"><span>Address</span><input type="text" name="address[address1]"></label>
+        <label class="field"><span>Address line 2</span><input type="text" name="address[address2]"></label>
+        <div class="grid grid--2">
+          <label class="field"><span>Town / city</span><input type="text" name="address[city]"></label>
+          <label class="field"><span>Postcode</span><input type="text" name="address[zip]"></label>
+        </div>
+        <div class="grid grid--2">
+          <label class="field"><span>Country</span>{{ form.country_options }}</label>
+          <label class="field"><span>Phone</span><input type="tel" name="address[phone]"></label>
+        </div>
+        <button class="btn" type="submit">Save address</button>
+      {% endform %}
+    </div>
+
+    {%- for address in customer.addresses -%}
+      <div class="form-card" style="margin-bottom:16px">
+        <p class="small">{{ address | format_address }}</p>
+        {%- if address == customer.default_address -%}<span class="pill">Default</span>{%- endif -%}
+        <div class="cluster" style="margin-top:12px">
+          <a class="btn btn--sm btn--secondary" href="{{ routes.account_addresses_url }}">Manage in account</a>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>

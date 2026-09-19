@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": { "type": "main-collection", "settings": { "show_clues": true } },
+    "reasons": {
+      "type": "value-props",
+      "settings": { "eyebrow": "Why it works", "heading": "Three boxes is all you need", "columns": 3, "background": "white" },
+      "blocks": {
+        "a": { "type": "feature", "settings": { "icon": "sparkle", "heading": "One clear price", "text": "Every box is £35. No upsells, no premium tiers, no decision fatigue." } },
+        "b": { "type": "feature", "settings": { "icon": "recycle", "heading": "Surplus rescued", "text": "Beautiful stems that would otherwise be wasted, bought direct from Dutch growers." } },
+        "c": { "type": "feature", "settings": { "icon": "heart", "heading": "Your rules respected", "text": "Tell us what to leave out on the box builder — allergies, pets, colours you can't stand." } }
+      },
+      "block_order": ["a", "b", "c"]
+    },
+    "cta": { "type": "cta-band", "settings": { "heading": "Still can't decide?", "text": "<p>Most people start with the Mystery Flower Box. You can always switch next time.</p>", "cta_text": "Surprise Me!", "background": "peony" } }
+  },
+  "order": ["main", "reasons", "cta"]
+}

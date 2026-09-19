@@ -1,0 +1,7 @@
+{%- if heading != blank or eyebrow != blank or subheading != blank -%}
+  <header class="section-head{% if align == 'left' %} section-head--left{% endif %}">
+    {%- if eyebrow != blank -%}<span class="eyebrow">{{ eyebrow }}</span>{%- endif -%}
+    {%- if heading != blank -%}<h2>{{ heading }}</h2>{%- endif -%}
+    {%- if subheading != blank -%}<div class="lede">{{ subheading }}</div>{%- endif -%}
+  </header>
+{%- endif -%}

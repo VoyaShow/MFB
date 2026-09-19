@@ -1,0 +1,338 @@
+{%- liquid
+  assign p = product
+  assign colours = section.settings.colour_options | split: ','
+  assign varieties = section.settings.variety_options | split: ','
+  assign care = section.settings.care_options | split: ','
+  assign clues = section.settings.clue_options | split: ','
+-%}
+
+<div class="section section--cream">
+  <div class="page-width">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Home</a> /
+      <a href="{{ routes.all_products_collection_url }}">Shop</a> /
+      <span>{{ p.title }}</span>
+    </nav>
+
+    <div class="product-layout">
+      {%- comment -%} ---------------------------------------- gallery {%- endcomment -%}
+      <div class="product-gallery" data-gallery>
+        <div class="product-gallery__main">
+          {%- if p.featured_image -%}
+            <img data-media-main src="{{ p.featured_image | image_url: width: 1200 }}"
+                 alt="{{ p.featured_image.alt | default: p.title | escape }}" width="1200" height="1200">
+          {%- else -%}
+            <img data-media-main src="{{ 'mfb-product-flower-box.png' | asset_url }}"
+                 alt="{{ p.title | escape }}" width="1200" height="1200">
+          {%- endif -%}
+        </div>
+        {%- if p.images.size > 1 -%}
+          <div class="product-gallery__thumbs">
+            {%- for image in p.images -%}
+              <button class="product-gallery__thumb" type="button" data-media-thumb
+                      data-src="{{ image | image_url: width: 1200 }}"
+                      data-alt="{{ image.alt | default: p.title | escape }}"
+                      aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+                      aria-label="Show image {{ forloop.index }}">
+                <img src="{{ image | image_url: width: 200 }}" alt="" width="200" height="200" loading="lazy">
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <div class="trust-row">
+          <span>{% render 'mfb-icon', icon: 'truck' %} Next-day delivery available</span>
+          <span>{% render 'mfb-icon', icon: 'recycle' %} Rescued from Dutch growers</span>
+          <span>{% render 'mfb-icon', icon: 'leaf' %} 7-day freshness promise</span>
+        </div>
+      </div>
+
+      {%- comment -%} ---------------------------------------- buy panel {%- endcomment -%}
+      <div>
+        {%- if p.metafields.mfb.flag.value != blank -%}
+          <span class="pill">{{ p.metafields.mfb.flag.value }}</span>
+        {%- endif -%}
+
+        <h1 style="margin-top:14px">{{ p.title }}</h1>
+
+        <div class="cluster" style="margin-bottom:14px">
+          {% render 'stars', rating: section.settings.rating %}
+          <span class="small muted">{{ section.settings.rating }}/5 from {{ section.settings.review_count }} reviews</span>
+        </div>
+
+        <div class="product-price" data-product-price>{{ p.price | money }}</div>
+        <div class="product-price__note">
+          <span data-price-per-box data-default="{{ section.settings.price_note | escape }}">{{ section.settings.price_note }}</span>
+        </div>
+
+        <div class="rte" style="margin-top:18px">
+          {{ p.metafields.mfb.short_description.value | default: p.description }}
+        </div>
+
+        {%- comment -%} -------------------------------------- box builder {%- endcomment -%}
+        {%- assign variant_json = '' -%}
+        {% form 'product', p, id: 'mfb-add-to-cart', novalidate: 'novalidate' %}
+          <div class="builder" data-box-builder
+               data-variants='[
+                 {%- for v in p.variants -%}
+                   {
+                     "id": {{ v.id }},
+                     "price": {{ v.price }},
+                     "available": {{ v.available }},
+                     "title": {{ v.title | json }},
+                     "boxes": {{ v.metafields.mfb.boxes.value | default: 1 }}
+                   }{% unless forloop.last %},{% endunless %}
+                 {%- endfor -%}
+               ]'>
+
+            <input type="hidden" name="id" value="{{ p.selected_or_first_available_variant.id }}" data-variant-id>
+
+            {%- comment -%} Step 1 - purchase option {%- endcomment -%}
+            <fieldset class="builder__step" style="border:0;padding:0;margin-bottom:22px">
+              <legend class="builder__step-title"><span class="builder__step-num">1</span> How often would you like a surprise?</legend>
+              <p class="builder__hint">Every box is {{ section.settings.price_note | default: 'one clear price' }}. Bundles are delivered on your chosen rhythm and you can pause any time.</p>
+              <div class="purchase-options">
+                {%- for v in p.variants -%}
+                  <div class="purchase-option">
+                    <input type="radio" name="purchase-option" id="po-{{ v.id }}" value="{{ v.id }}"
+                           data-purchase-option
+                           {% if v == p.selected_or_first_available_variant %}checked{% endif %}
+                           {% unless v.available %}disabled{% endunless %}>
+                    <label class="purchase-option__label" for="po-{{ v.id }}">
+                      <span class="purchase-option__dot" aria-hidden="true"></span>
+                      <span class="purchase-option__text">
+                        <span class="purchase-option__name">{{ v.title }}</span>
+                        <span class="purchase-option__meta">
+                          {%- if v.metafields.mfb.plan_note.value != blank -%}
+                            {{ v.metafields.mfb.plan_note.value }}
+                          {%- elsif v.available -%}
+                            Delivered to your door, beautifully packed
+                          {%- else -%}
+                            Sold out
+                          {%- endif -%}
+                        </span>
+                      </span>
+                      <span class="purchase-option__price">{{ v.price | money }}</span>
+                    </label>
+                  </div>
+                {%- endfor -%}
+              </div>
+            </fieldset>
+
+            {%- comment -%} Step 2 - full surprise switch {%- endcomment -%}
+            <div class="builder__step" style="background:var(--blush);border-color:var(--peony)">
+              <div class="builder__step-title"><span class="builder__step-num">2</span> How brave are you feeling?</div>
+              <p class="builder__hint">Customers don&rsquo;t pick flowers &mdash; they buy the surprise. But if there is something you would rather not receive, tell us below.</p>
+              <div class="chips">
+                <span class="chip chip--solo">
+                  <input type="checkbox" id="full-surprise" data-full-surprise
+                         name="properties[Mystery level]" value="Total mystery — no clues, no exclusions">
+                  <label class="chip__label" for="full-surprise">🎁 Total mystery &mdash; surprise me completely</label>
+                </span>
+              </div>
+            </div>
+
+            {%- comment -%} Step 3 - colours to leave out {%- endcomment -%}
+            <fieldset class="builder__step" data-lockable data-exclusion-group data-max="{{ section.settings.max_colour_exclusions }}">
+              <legend class="builder__step-title"><span class="builder__step-num">3</span> Any colours to leave out?</legend>
+              <p class="builder__hint">Tick anything you would rather not receive. Leave them all blank for the full surprise.</p>
+              <div class="chips">
+                {%- for entry in colours -%}
+                  {%- assign parts = entry | strip | split: ':' -%}
+                  {%- assign label = parts[0] | strip -%}
+                  {%- assign swatch = parts[1] | default: '#FFBBE2' | strip -%}
+                  <span class="chip">
+                    <input type="checkbox" id="colour-{{ forloop.index }}" data-exclusion data-kind="colour"
+                           data-label="{{ label | escape }}" value="{{ label | escape }}">
+                    <label class="chip__label" for="colour-{{ forloop.index }}">
+                      <span class="chip__swatch" style="background:{{ swatch }}"></span>
+                      {{ label }}
+                      <span class="chip__cross" aria-hidden="true">✕</span>
+                    </label>
+                  </span>
+                {%- endfor -%}
+              </div>
+              <p class="form-note" data-exclusion-note hidden>
+                That is the maximum number of colours we can leave out and still fill a generous box.
+              </p>
+              <input type="hidden" name="properties[Flower colours to leave out]" data-property="colour" value="">
+            </fieldset>
+
+            {%- comment -%} Step 4 - varieties to leave out {%- endcomment -%}
+            <fieldset class="builder__step" data-lockable data-exclusion-group data-max="{{ section.settings.max_variety_exclusions }}">
+              <legend class="builder__step-title"><span class="builder__step-num">4</span> Any flowers or plants to leave out?</legend>
+              <p class="builder__hint">Not a fan of chrysanthemums? Allergic to lilies? Tell us and our growers will pack around it.</p>
+              <div class="chips">
+                {%- for entry in varieties -%}
+                  {%- assign label = entry | strip -%}
+                  <span class="chip">
+                    <input type="checkbox" id="variety-{{ forloop.index }}" data-exclusion data-kind="variety"
+                           data-label="{{ label | escape }}" value="{{ label | escape }}">
+                    <label class="chip__label" for="variety-{{ forloop.index }}">
+                      {{ label }}<span class="chip__cross" aria-hidden="true">✕</span>
+                    </label>
+                  </span>
+                {%- endfor -%}
+              </div>
+              <p class="form-note" data-exclusion-note hidden>
+                That is as many varieties as we can leave out while keeping your box full.
+              </p>
+              <input type="hidden" name="properties[Flower varieties to leave out]" data-property="variety" value="">
+            </fieldset>
+
+            {%- comment -%} Step 5 - household needs {%- endcomment -%}
+            <fieldset class="builder__step" data-lockable>
+              <legend class="builder__step-title"><span class="builder__step-num">5</span> Anything we should know about your home?</legend>
+              <p class="builder__hint">We will match your box to your household.</p>
+              <div class="chips">
+                {%- for entry in care -%}
+                  {%- assign label = entry | strip -%}
+                  <span class="chip">
+                    <input type="checkbox" id="care-{{ forloop.index }}" data-exclusion data-kind="care"
+                           data-label="{{ label | escape }}" value="{{ label | escape }}">
+                    <label class="chip__label" for="care-{{ forloop.index }}">{{ label }}</label>
+                  </span>
+                {%- endfor -%}
+              </div>
+              <input type="hidden" name="properties[Household needs]" data-property="care" value="">
+            </fieldset>
+
+            {%- comment -%} Step 6 - clue level {%- endcomment -%}
+            <fieldset class="builder__step" data-lockable>
+              <legend class="builder__step-title"><span class="builder__step-num">6</span> Want a clue before it lands?</legend>
+              <p class="builder__hint">Reveal a hint the day before delivery, or keep the whole thing sealed.</p>
+              <div class="chips">
+                {%- for entry in clues -%}
+                  {%- assign label = entry | strip -%}
+                  <span class="chip">
+                    <input type="radio" name="properties[Clue before delivery]" id="clue-{{ forloop.index }}"
+                           data-clue value="{{ label | escape }}" {% if forloop.first %}checked{% endif %}>
+                    <label class="chip__label" for="clue-{{ forloop.index }}">{{ label }}</label>
+                  </span>
+                {%- endfor -%}
+              </div>
+            </fieldset>
+
+            {%- comment -%} Step 7 - delivery & gifting {%- endcomment -%}
+            <fieldset class="builder__step">
+              <legend class="builder__step-title"><span class="builder__step-num">7</span> When shall we deliver?</legend>
+              <label class="field">
+                <span>Preferred delivery date</span>
+                <input type="date" name="properties[Preferred delivery date]" data-delivery-date
+                       min="{{ 'now' | date: '%s' | plus: 172800 | date: '%Y-%m-%d' }}">
+              </label>
+              <label class="field">
+                <span>Gift message (optional)</span>
+                <textarea name="properties[Gift message]" data-gift-message rows="3"
+                          placeholder="Happy birthday! Hope this one makes you smile."></textarea>
+              </label>
+            </fieldset>
+
+            <div class="summary">
+              <h4>Your box so far</h4>
+              <ul data-builder-summary><li>No exclusions yet &mdash; you are open to anything. 🌷</li></ul>
+            </div>
+
+            <div class="cluster" style="margin-bottom:16px">
+              <div class="quantity">
+                <button type="button" data-qty="down" aria-label="Decrease quantity">&minus;</button>
+                <input type="number" name="quantity" value="1" min="1" aria-label="Quantity">
+                <button type="button" data-qty="up" aria-label="Increase quantity">+</button>
+              </div>
+              <button class="btn btn--lg" type="submit" data-add-to-cart
+                      data-label-default="Add my surprise — {{ p.price | money }}"
+                      data-label-sold-out="Sold out"
+                      {% unless p.available %}disabled{% endunless %}>
+                <span data-add-label>{% if p.available %}Add my surprise{% else %}Sold out{% endif %}</span>
+              </button>
+            </div>
+
+            <p class="form-note">
+              {% render 'mfb-icon', icon: 'lock' %} Secure checkout. Cancel or pause a bundle any time from your account.
+            </p>
+          </div>
+        {% endform %}
+
+        {%- comment -%} -------------------------------------- detail accordions {%- endcomment -%}
+        <div class="accordion" style="margin-top:36px">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'accordion' -%}
+              <details class="accordion__item" {{ block.shopify_attributes }} {% if forloop.first %}open{% endif %}>
+                <summary class="accordion__summary">{{ block.settings.heading }}</summary>
+                <div class="accordion__body rte">{{ block.settings.content }}</div>
+              </details>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- comment -%} ------------------------------------------- other two boxes {%- endcomment -%}
+{%- assign shop_collection = collections[section.settings.related_collection] -%}
+{%- if shop_collection.products.size > 1 -%}
+  <div class="section section--white">
+    <div class="page-width">
+      {% render 'section-head', eyebrow: 'Three clear choices', heading: 'The other boxes' %}
+      <div class="grid grid--3">
+        {%- for item in shop_collection.products -%}
+          {%- unless item.id == p.id -%}
+            {% render 'product-card', product: item %}
+          {%- endunless -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ p.title | json }},
+  "description": {{ p.description | strip_html | truncate: 400 | json }},
+  "image": [{{ p.featured_image | image_url: width: 1200 | prepend: 'https:' | json }}],
+  "brand": { "@type": "Brand", "name": {{ shop.name | json }} },
+  "offers": {
+    "@type": "Offer",
+    "price": {{ p.price | divided_by: 100.0 | json }},
+    "priceCurrency": {{ cart.currency.iso_code | json }},
+    "availability": "https://schema.org/{% if p.available %}InStock{% else %}OutOfStock{% endif %}",
+    "url": {{ p.url | prepend: shop.url | json }}
+  }
+}
+</script>
+
+{% schema %}
+{
+  "name": "Product page",
+  "settings": [
+    { "type": "text", "id": "price_note", "label": "Price note", "default": "One clear price. Free UK delivery." },
+    { "type": "range", "id": "rating", "min": 3, "max": 5, "step": 0.1, "label": "Displayed rating", "default": 4.8 },
+    { "type": "text", "id": "review_count", "label": "Review count", "default": "1,284" },
+    { "type": "collection", "id": "related_collection", "label": "Related boxes collection" },
+    { "type": "header", "content": "Box builder options" },
+    { "type": "textarea", "id": "colour_options", "label": "Colours (Label:hex, comma separated)",
+      "default": "Red:#D5344B, Pink:#FF80C3, Orange:#EDAD80, Yellow:#FEC985, White:#FFFFFF, Purple:#C5B7D8, Green:#9CA379" },
+    { "type": "textarea", "id": "variety_options", "label": "Varieties (comma separated)",
+      "default": "Roses, Lilies, Chrysanthemums, Carnations, Tulips, Gerberas, Alstroemeria, Heavy foliage, Dried stems" },
+    { "type": "textarea", "id": "care_options", "label": "Household needs (comma separated)",
+      "default": "Pet-friendly only, Low pollen / allergy aware, No strong scent, Low light home" },
+    { "type": "textarea", "id": "clue_options", "label": "Clue options (comma separated)",
+      "default": "No clue — total surprise, Tell me the main colour, Tell me one variety" },
+    { "type": "range", "id": "max_colour_exclusions", "min": 1, "max": 6, "step": 1, "label": "Max colours excluded", "default": 3 },
+    { "type": "range", "id": "max_variety_exclusions", "min": 1, "max": 8, "step": 1, "label": "Max varieties excluded", "default": 4 }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Detail accordion",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "What is inside?" },
+        { "type": "richtext", "id": "content", "label": "Content", "default": "<p>A generous surprise mix, packed fresh the morning it leaves us.</p>" }
+      ]
+    }
+  ]
+}
+{% endschema %}

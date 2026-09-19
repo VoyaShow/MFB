@@ -1,0 +1,48 @@
+<section class="section section--cream">
+  <div class="page-width">
+    <h1>Search</h1>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="inline-form" style="max-width:640px">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Boxes, flower care, partnerships…" aria-label="Search">
+      <button class="btn" type="submit">Search</button>
+    </form>
+
+    {%- if search.performed -%}
+      <p class="muted" style="margin-top:20px">{{ search.results_count }} result{% if search.results_count != 1 %}s{% endif %} for &ldquo;{{ search.terms }}&rdquo;</p>
+
+      {%- if search.results_count > 0 -%}
+        <div class="grid grid--3" style="margin-top:26px">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {% render 'product-card', product: item %}
+            {%- else -%}
+              <article class="article-card">
+                <div class="article-card__body">
+                  <span class="article-card__date">{{ item.object_type | capitalize }}</span>
+                  <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+                  <p class="muted">{{ item.content | default: item.excerpt | strip_html | truncatewords: 22 }}</p>
+                </div>
+              </article>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+        {%- if paginate.pages > 1 -%}
+          <nav class="pagination">
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>{%- else -%}<span class="is-current">{{ part.title }}</span>{%- endif -%}
+            {%- endfor -%}
+          </nav>
+        {%- endif -%}
+      {%- else -%}
+        <div class="empty-state">
+          {% render 'mfb-icon', icon: 'search' %}
+          <h3>Nothing found</h3>
+          <p class="muted">Try a different search, or just let us surprise you.</p>
+          <a class="btn" href="{{ routes.all_products_collection_url }}">Surprise Me!</a>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{ "name": "Search" }
+{% endschema %}

@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "hero": { "type": "page-hero", "settings": { "eyebrow": "Subscriptions", "heading": "A surprise on repeat", "text": "<p>Weekly, fortnightly or monthly. Pause, skip, upgrade or cancel yourself — no emails, no phone calls, no awkward retention chat.</p>", "cta_text": "Choose a plan", "cta_link": "/collections/shop", "background": "blush" } },
+    "plans": {
+      "type": "subscription-plans",
+      "settings": { "eyebrow": "", "heading": "", "footnote": "<p>Every plan includes free UK delivery, double loyalty points and first refusal on limited boxes.</p>", "background": "white" },
+      "blocks": {
+        "p1": { "type": "plan", "settings": { "name": "Weekly", "price": "£35", "cadence": "per box, every week", "perks": "Free UK delivery\nPause or skip any time\nDouble loyalty points\nFor people who really love flowers", "cta": "Start weekly", "link": "/collections/shop" } },
+        "p2": { "type": "plan", "settings": { "name": "Fortnightly", "price": "£35", "cadence": "per box, every two weeks", "perks": "Free UK delivery\nPause or skip any time\nDouble loyalty points\nMost popular rhythm", "cta": "Start fortnightly", "link": "/collections/shop", "featured": true } },
+        "p3": { "type": "plan", "settings": { "name": "Monthly", "price": "£35", "cadence": "per box, every month", "perks": "Free UK delivery\nPause or skip any time\nDouble loyalty points\nA monthly treat", "cta": "Start monthly", "link": "/collections/shop" } },
+        "p4": { "type": "plan", "settings": { "name": "Gift a plan", "price": "From £99", "cadence": "3, 6 or 12 boxes, prepaid", "perks": "Delivered to them, billed to you\nPersonal message in the first box\nNothing for them to cancel\nPerfect for birthdays", "cta": "Gift a plan", "link": "/collections/shop" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"]
+    },
+    "manage": {
+      "type": "value-props",
+      "settings": { "eyebrow": "Self-service", "heading": "Everything you can do yourself", "columns": 4, "background": "cream" },
+      "blocks": {
+        "a": { "type": "feature", "settings": { "icon": "truck", "heading": "Pause or skip", "text": "Going away? Skip a delivery or pause the whole plan from your account in two clicks." } },
+        "b": { "type": "feature", "settings": { "icon": "sparkle", "heading": "Change your no-list", "text": "Update the colours and varieties to leave out at any time — it applies from the next box." } },
+        "c": { "type": "feature", "settings": { "icon": "gift", "heading": "Upgrade or downgrade", "text": "Switch between weekly, fortnightly and monthly whenever you like." } },
+        "d": { "type": "feature", "settings": { "icon": "lock", "heading": "Cancel yourself", "text": "One button. No retention call, no hoops. We would rather you came back later." } }
+      },
+      "block_order": ["a", "b", "c", "d"]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "eyebrow": "Subscription FAQ", "heading": "The details", "background": "white" },
+      "blocks": {
+        "q1": { "type": "qa", "settings": { "question": "When am I charged?", "answer": "<p>On the day your box is packed, not before. You'll get an email two days ahead so you can skip if you want to.</p>" } },
+        "q2": { "type": "qa", "settings": { "question": "Can I change my exclusions later?", "answer": "<p>Yes — update your no-list from your account and it applies to the next box we pack.</p>" } },
+        "q3": { "type": "qa", "settings": { "question": "Can I send it to someone else?", "answer": "<p>Yes. Add their address as the delivery address, or buy a prepaid gift plan so there's nothing for them to manage.</p>" } },
+        "q4": { "type": "qa", "settings": { "question": "What if I'm not in?", "answer": "<p>Our boxes are designed to fit through a standard letterbox where possible, and are left in your safe place otherwise.</p>" } },
+        "q5": { "type": "qa", "settings": { "question": "Is there a minimum term?", "answer": "<p>No. Cancel after one box if you want to.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5"]
+    },
+    "cta": { "type": "cta-band", "settings": { "heading": "Start with one box", "text": "<p>Try a single surprise first. You can always switch to a plan afterwards.</p>", "cta_text": "Surprise Me!", "cta_link": "/collections/shop", "background": "peony" } }
+  },
+  "order": ["hero", "plans", "manage", "faq", "cta"]
+}

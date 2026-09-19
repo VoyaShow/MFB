@@ -1,0 +1,24 @@
+<section class="section section--{{ section.settings.background }}">
+  <div class="page-width {% if section.settings.narrow %}page-width--narrow{% endif %}">
+    {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+    <div class="rte">{{ section.settings.content }}</div>
+    {%- if section.settings.cta_text != blank -%}
+      <a class="btn" style="margin-top:22px" href="{{ section.settings.cta_link }}">{{ section.settings.cta_text }}</a>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Rich text",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Tell your story here.</p>" },
+    { "type": "text", "id": "cta_text", "label": "Button label" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+    { "type": "checkbox", "id": "narrow", "label": "Narrow column", "default": true },
+    { "type": "select", "id": "background", "label": "Background", "default": "white",
+      "options": [{ "value": "cream", "label": "Cream" }, { "value": "white", "label": "White" }, { "value": "blush", "label": "Blush" }, { "value": "mist", "label": "Mist" }, { "value": "sand", "label": "Sand" }, { "value": "meadow", "label": "Meadow" }] }
+  ],
+  "presets": [{ "name": "Rich text" }]
+}
+{% endschema %}

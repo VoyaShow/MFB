@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "hero": { "type": "page-hero", "settings": { "eyebrow": "Competitions & Golden Tickets", "heading": "There is something hiding in one box in every 250", "text": "<p>Free boxes for a year, grower tours, weekend breaks and limited-edition blooms. Plus a monthly draw anyone can enter.</p>", "background": "blush" } },
+    "golden": {
+      "type": "golden-ticket",
+      "settings": { "eyebrow": "Recent winners", "heading": "The Golden Ticket tracker", "text": "<p>Every Golden Ticket is announced here and on our social channels. If you find one, scan the QR code on the ticket to claim it.</p>", "cta_text": "", "background": "peony" },
+      "blocks": {
+        "w1": { "type": "winner", "settings": { "emoji": "🎟️", "prize": "A year of free boxes", "winner": "Priya, Birmingham — last Friday" } },
+        "w2": { "type": "winner", "settings": { "emoji": "🚐", "prize": "Grower tour for two, Holland", "winner": "Sam, Newcastle — this month" } },
+        "w3": { "type": "winner", "settings": { "emoji": "💐", "prize": "Limited-edition peony box", "winner": "Kelly, Southampton — last week" } },
+        "w4": { "type": "winner", "settings": { "emoji": "🏨", "prize": "Weekend break for two", "winner": "Ruth, Aberdeen — two weeks ago" } }
+      },
+      "block_order": ["w1", "w2", "w3", "w4"]
+    },
+    "competition": { "type": "competition", "settings": { "eyebrow": "This month's draw", "heading": "Win a year of Mystery Flower Boxes", "text": "<p>No purchase necessary. Enter once and you're in every monthly draw from now on.</p>", "closes_at": "2026-12-31T23:59:59", "competition_tag": "comp-year-of-flowers", "cta_text": "Enter the draw", "background": "cream" } },
+    "terms": { "type": "rich-text", "settings": { "heading": "Competition terms", "content": "<p>Open to residents of the United Kingdom aged 18 or over. No purchase is necessary to enter the monthly draw. One entry per person per draw. Entries close at 23:59 on the last day of each calendar month. The winner is drawn at random within five working days of closing and notified by email; if we cannot reach a winner within 14 days we will redraw.</p><p>Golden Tickets are distributed at random across production and cannot be requested, purchased or transferred. Prizes are non-transferable and there is no cash alternative. Our decision is final. By entering you agree that we may publish your first name and town if you win. Your data is handled in line with our privacy policy and you may withdraw consent at any time.</p>", "narrow": true, "background": "white" } },
+    "cta": { "type": "cta-band", "settings": { "heading": "Better odds if you open more boxes", "cta_text": "Surprise Me!", "cta_link": "/collections/shop", "background": "raspberry" } }
+  },
+  "order": ["hero", "golden", "competition", "terms", "cta"]
+}

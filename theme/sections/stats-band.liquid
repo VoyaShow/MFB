@@ -1,0 +1,41 @@
+<section class="section section--{{ section.settings.background }} {% if section.settings.tight %}section--tight{% endif %}">
+  <div class="page-width">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, subheading: section.settings.subheading %}
+    <div class="stat-row">
+      {%- for block in section.blocks -%}
+        <div {{ block.shopify_attributes }}>
+          <div class="stat__value">{{ block.settings.value }}</div>
+          <div class="stat__label">{{ block.settings.label }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.cta_text != blank -%}
+      <div class="cluster cluster--center" style="margin-top:38px">
+        <a class="btn btn--secondary" href="{{ section.settings.cta_link }}">{{ section.settings.cta_text }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Stats band",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The numbers behind the surprise" },
+    { "type": "richtext", "id": "subheading", "label": "Subheading" },
+    { "type": "text", "id": "cta_text", "label": "Button label" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+    { "type": "checkbox", "id": "tight", "label": "Reduced padding", "default": false },
+    { "type": "select", "id": "background", "label": "Background", "default": "mist",
+      "options": [{ "value": "cream", "label": "Cream" }, { "value": "white", "label": "White" }, { "value": "blush", "label": "Blush" }, { "value": "mist", "label": "Mist" }, { "value": "meadow", "label": "Meadow" }, { "value": "sand", "label": "Sand" }] }
+  ],
+  "blocks": [
+    { "type": "stat", "name": "Stat", "settings": [
+      { "type": "text", "id": "value", "label": "Value", "default": "1.2m" },
+      { "type": "text", "id": "label", "label": "Label", "default": "stems rescued" }
+    ] }
+  ],
+  "presets": [{ "name": "Stats band" }]
+}
+{% endschema %}

@@ -1,0 +1,51 @@
+{
+  "sections": {
+    "hero": { "type": "page-hero", "settings": { "eyebrow": "How it works", "heading": "Four steps to a very good day", "text": "<p>You don't pick the flowers. You pick the box, set your no-list, and we do the rest.</p>", "cta_text": "Surprise Me!", "cta_link": "/collections/shop", "background": "blush" } },
+    "steps": {
+      "type": "how-it-works",
+      "settings": { "eyebrow": "", "heading": "", "background": "white" },
+      "blocks": {
+        "s1": { "type": "step", "settings": { "heading": "Pick your box", "text": "Flowers, plants, or both. Every box is £35, one-off or on repeat." } },
+        "s2": { "type": "step", "settings": { "heading": "Set your no-list", "text": "Up to three colours and four varieties you'd rather not receive, plus pet and allergy needs." } },
+        "s3": { "type": "step", "settings": { "heading": "We pack it fresh", "text": "Our Dutch growers fill your box the morning it leaves, working around your list." } },
+        "s4": { "type": "step", "settings": { "heading": "Open the lid", "text": "Film it, tag us, collect loyalty points — and check inside for a Golden Ticket." } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"]
+    },
+    "personalise": {
+      "type": "personalise",
+      "settings": { "eyebrow": "The box builder", "heading": "The only thing you choose is what you don't want", "text": "<p>On every product page you'll find the box builder. Tick the colours and varieties to leave out, flag allergies or pets, choose whether you'd like a clue before delivery, and pick your date. Everything else stays sealed until the lid comes off.</p>", "cta_text": "Try the box builder", "cta_link": "/collections/shop", "reverse": true, "background": "blush" },
+      "blocks": {
+        "c1": { "type": "chip", "settings": { "text": "No lilies" } },
+        "c2": { "type": "chip", "settings": { "text": "No orange", "swatch": "#EDAD80" } },
+        "c3": { "type": "chip", "settings": { "text": "No red", "swatch": "#D5344B" } },
+        "c4": { "type": "chip", "settings": { "text": "Pet-friendly only" } },
+        "c5": { "type": "chip", "settings": { "text": "Low pollen" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "c5"]
+    },
+    "growers": {
+      "type": "grower-stories",
+      "settings": { "eyebrow": "Meet the growers", "heading": "The people behind the surprise", "columns": 3, "background": "meadow" },
+      "blocks": {
+        "g1": { "type": "grower", "settings": { "fallback": "mfb-grower-1", "name": "De Vries Family", "region": "Aalsmeer, NL", "text": "Third-generation rose growers. What doesn't meet the auction grade goes straight into your box." } },
+        "g2": { "type": "grower", "settings": { "fallback": "mfb-grower-2", "name": "Kwekerij Bloem", "region": "Westland, NL", "text": "Tulips by the million every spring. We take the surplus the day it's cut." } },
+        "g3": { "type": "grower", "settings": { "fallback": "mfb-grower-3", "name": "Van Dijk Planten", "region": "Rijnsburg, NL", "text": "House plants grown slowly, in peat-free compost, under Dutch glass." } }
+      },
+      "block_order": ["g1", "g2", "g3"]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "eyebrow": "Questions", "heading": "Before you order", "background": "white" },
+      "blocks": {
+        "q1": { "type": "qa", "settings": { "question": "Can I choose what's in my box?", "answer": "<p>Not exactly — that's the whole point. What you can do is tell us what to leave out: up to three colours and four varieties, plus needs like pet-friendly or low pollen.</p>" } },
+        "q2": { "type": "qa", "settings": { "question": "How many stems do I get?", "answer": "<p>Typically 15–25 stems, depending on the varieties available that week. Plant boxes contain two to four plants.</p>" } },
+        "q3": { "type": "qa", "settings": { "question": "What if I don't like what arrives?", "answer": "<p>Tell us within 48 hours and we'll put it right. Our 7-day freshness promise covers any stem that doesn't last the week.</p>" } },
+        "q4": { "type": "qa", "settings": { "question": "Can I get a clue first?", "answer": "<p>Yes. On the box builder you can ask for the main colour or one variety to be revealed the day before delivery — or keep it completely sealed.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"]
+    },
+    "cta": { "type": "cta-band", "settings": { "heading": "Ready for a very good surprise?", "cta_text": "Surprise Me!", "cta_link": "/collections/shop", "background": "peony" } }
+  },
+  "order": ["hero", "steps", "personalise", "growers", "faq", "cta"]
+}

@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "hero": { "type": "page-hero", "settings": { "eyebrow": "Investors", "heading": "A consumer platform, not a flower shop", "text": "<p>Mystery Flower Box connects supermarket retail, ecommerce, subscriptions, loyalty and retail media into one measurable growth engine.</p>", "cta_text": "Contact the team", "cta_link": "#investor-contact", "background": "mist" } },
+    "stats": {
+      "type": "stats-band",
+      "settings": { "eyebrow": "Performance", "heading": "The numbers", "background": "white" },
+      "blocks": {
+        "n1": { "type": "stat", "settings": { "value": "1.2m", "label": "stems rescued to date" } },
+        "n2": { "type": "stat", "settings": { "value": "62%", "label": "repeat purchase rate" } },
+        "n3": { "type": "stat", "settings": { "value": "40k+", "label": "first-party records" } },
+        "n4": { "type": "stat", "settings": { "value": "£35", "label": "single price point" } }
+      },
+      "block_order": ["n1", "n2", "n3", "n4"]
+    },
+    "profile": { "type": "rich-text", "settings": { "heading": "Company profile", "content": "<p>Mystery Flower Box buys surplus stock from Dutch growers and sells it as a fixed-price surprise box through supermarkets and direct ecommerce. The model removes choice paralysis, removes waste, and creates a product customers photograph and share.</p><h3>Revenue streams</h3><ul><li>Direct ecommerce — one-off boxes and prepaid bundles</li><li>Subscriptions — weekly, fortnightly and monthly rhythms</li><li>Retail wholesale — supermarket and independent stockists</li><li>Retail media — sampling, inserts, sponsorship and co-branded competitions</li><li>Corporate gifting — employee and client programmes</li><li>Future territory licensing</li></ul><h3>Strategic priorities</h3><ul><li>Convert supermarket purchasers into known digital customers via QR registration</li><li>Build the largest first-party flower customer database in Europe</li><li>Grow subscription share of revenue</li><li>Monetise the box itself as a media channel</li></ul>", "narrow": true, "background": "cream" } },
+    "growth": {
+      "type": "value-props",
+      "settings": { "eyebrow": "Growth plan", "heading": "Four phases", "columns": 4, "background": "white" },
+      "blocks": {
+        "a": { "type": "feature", "settings": { "icon": "sparkle", "heading": "Phase 1 · Commerce", "text": "Shop, checkout, subscriptions, CRM, analytics and retail QR registration." } },
+        "b": { "type": "feature", "settings": { "icon": "heart", "heading": "Phase 2 · Community", "text": "Gallery, reviews, referrals, rewards and automated lifecycle journeys." } },
+        "c": { "type": "feature", "settings": { "icon": "gift", "heading": "Phase 3 · Commercial", "text": "Partner marketplace, campaign reporting, corporate gifting, retail intelligence." } },
+        "d": { "type": "feature", "settings": { "icon": "pin", "heading": "Phase 4 · International", "text": "Multi-territory stores, licensing support and territory-specific integrations." } }
+      },
+      "block_order": ["a", "b", "c", "d"]
+    },
+    "investor-contact": {
+      "type": "enquiry-form",
+      "settings": { "eyebrow": "Investor contact", "heading": "Request the investor pack", "subheading": "<p>Business plan, growth targets, unit economics and current fundraising position.</p>", "subject": "Investor enquiry", "cta_text": "Request the pack", "success_heading": "Thank you — request received.", "success_text": "We will be in touch to arrange a call and share the investor pack.", "background": "mist" },
+      "blocks": {
+        "f1": { "type": "select", "settings": { "label": "You are", "options": "Angel investor, VC or institutional, Strategic partner, Analyst or press, Other", "required": true } },
+        "f2": { "type": "text", "settings": { "label": "Fund or organisation", "placeholder": "Where you're writing from" } },
+        "f3": { "type": "textarea", "settings": { "label": "What would you like to know" } }
+      },
+      "block_order": ["f1", "f2", "f3"]
+    },
+    "press": { "type": "latest-news", "settings": { "eyebrow": "In the press", "heading": "Media coverage", "blog": "news", "background": "white" } }
+  },
+  "order": ["hero", "stats", "profile", "growth", "investor-contact", "press"]
+}

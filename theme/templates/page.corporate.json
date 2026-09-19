@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "hero": { "type": "page-hero", "settings": { "eyebrow": "Corporate gifting", "heading": "The gift people actually talk about", "text": "<p>Employee thank-yous, client gifts, events and hospitality. One clear price, no negotiation, and a moment worth filming.</p>", "cta_text": "Request a quote", "cta_link": "#quote", "background": "blush" } },
+    "props": {
+      "type": "value-props",
+      "settings": { "eyebrow": "Why it works at scale", "heading": "Better than a branded water bottle", "columns": 4, "background": "white" },
+      "blocks": {
+        "a": { "type": "feature", "settings": { "icon": "gift", "heading": "£35 a box", "text": "Simple budgeting. No tiers to argue about, no hidden delivery charges." } },
+        "b": { "type": "feature", "settings": { "icon": "truck", "heading": "Nationwide delivery", "text": "One list, hundreds of addresses, delivered on the date you choose." } },
+        "c": { "type": "feature", "settings": { "icon": "heart", "heading": "Personal messages", "text": "A printed card in every box, personalised per recipient if you want." } },
+        "d": { "type": "feature", "settings": { "icon": "recycle", "heading": "A story worth telling", "text": "Every box is rescued surplus — a gift with a sustainability line attached." } }
+      },
+      "block_order": ["a", "b", "c", "d"]
+    },
+    "stats": {
+      "type": "stats-band",
+      "settings": { "eyebrow": "Corporate clients", "heading": "What companies send", "background": "mist", "tight": true },
+      "blocks": {
+        "n1": { "type": "stat", "settings": { "value": "50+", "label": "boxes: bulk pricing applies" } },
+        "n2": { "type": "stat", "settings": { "value": "14 days", "label": "lead time for large orders" } },
+        "n3": { "type": "stat", "settings": { "value": "100%", "label": "of boxes carry your message" } },
+        "n4": { "type": "stat", "settings": { "value": "1 invoice", "label": "however many addresses" } }
+      },
+      "block_order": ["n1", "n2", "n3", "n4"]
+    },
+    "quote": {
+      "type": "enquiry-form",
+      "settings": { "eyebrow": "Request a quote", "heading": "Tell us what you need", "subheading": "<p>Give us the shape of it and we'll come back with a price and a delivery plan within one working day.</p>", "subject": "Corporate gifting enquiry", "cta_text": "Request a quote", "success_heading": "Thank you — quote request received.", "success_text": "Our corporate team will reply within one working day with pricing and available dates.", "background": "cream" },
+      "blocks": {
+        "f1": { "type": "select", "settings": { "label": "What is the occasion", "options": "Employee gifts, Client gifts, Events and hospitality, Conference or exhibition, Something else", "required": true } },
+        "f2": { "type": "select", "settings": { "label": "How many boxes", "options": "Under 25, 25–100, 100–500, 500–2,000, 2,000+", "required": true } },
+        "f3": { "type": "text", "settings": { "label": "Delivery date needed", "placeholder": "e.g. week of 8 December", "required": true } },
+        "f4": { "type": "select", "settings": { "label": "Budget", "options": "Under £1,000, £1,000–£5,000, £5,000–£25,000, £25,000+", "required": true } },
+        "f5": { "type": "text", "settings": { "label": "Delivery to one address or many?", "placeholder": "e.g. 200 home addresses" } },
+        "f6": { "type": "textarea", "settings": { "label": "Anything else", "placeholder": "Personalised messages, branded inserts, allergy requirements…" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6"]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "eyebrow": "Corporate FAQ", "heading": "The practical bits", "background": "white" },
+      "blocks": {
+        "q1": { "type": "qa", "settings": { "question": "Can you deliver to hundreds of home addresses?", "answer": "<p>Yes. Send us a spreadsheet and we handle the rest — one invoice, one delivery window, individual tracking.</p>" } },
+        "q2": { "type": "qa", "settings": { "question": "Do you offer bulk pricing?", "answer": "<p>Boxes remain £35 up to 50 units. Above that we'll quote you directly — volume pricing starts at 50 boxes.</p>" } },
+        "q3": { "type": "qa", "settings": { "question": "Can we brand the box?", "answer": "<p>Yes — printed cards, branded sleeves and custom inserts are all possible with 14 days' notice.</p>" } },
+        "q4": { "type": "qa", "settings": { "question": "How do you handle allergies?", "answer": "<p>We can apply a blanket exclusion list across an entire order, or collect preferences per recipient.</p>" } },
+        "q5": { "type": "qa", "settings": { "question": "Can we pay on invoice?", "answer": "<p>Yes, for orders over 50 boxes. Standard terms are 30 days from delivery.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5"]
+    },
+    "cta": { "type": "cta-band", "settings": { "heading": "Want to try one first?", "text": "<p>Order a single box and see exactly what your team would get.</p>", "cta_text": "Order a sample box", "cta_link": "/collections/shop", "background": "peony" } }
+  },
+  "order": ["hero", "props", "stats", "quote", "faq", "cta"]
+}

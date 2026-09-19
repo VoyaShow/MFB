@@ -1,0 +1,68 @@
+<section class="section section--{{ section.settings.background }}">
+  <div class="page-width">
+    <div class="split {% if section.settings.reverse %}split--reverse{% endif %}">
+      <div class="split__media">
+        <img src="{{ section.settings.image | image_url: width: 1200 | default: 'mfb-gallery-05.svg' | asset_url }}"
+             alt="{{ section.settings.heading | escape }}" width="900" height="900" loading="lazy">
+      </div>
+      <div>
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2>{{ section.settings.heading }}</h2>
+        <div class="lede">{{ section.settings.text }}</div>
+
+        <div class="stack" style="margin-top:26px">
+          <div class="form-card" style="padding:22px">
+            <span class="field-label">Your referral link</span>
+            <div class="cluster">
+              <code style="flex:1;min-width:220px;font-size:.95rem;word-break:break-all">{{ section.settings.sample_link }}</code>
+              <button class="btn btn--sm" type="button" data-copy="{{ section.settings.sample_link }}">Copy link</button>
+            </div>
+            <p class="form-note">{{ section.settings.note }}</p>
+          </div>
+          <div class="stat-row" style="margin-top:8px">
+            {%- for block in section.blocks -%}
+              <div {{ block.shopify_attributes }}>
+                <div class="stat__value">{{ block.settings.value }}</div>
+                <div class="stat__label">{{ block.settings.label }}</div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        {%- if section.settings.cta_text != blank -%}
+          <a class="btn" style="margin-top:26px" href="{{ section.settings.cta_link }}">{{ section.settings.cta_text }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Refer a friend",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Refer a friend" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Give £10, get a free box" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Share your link. Your friend gets £10 off their first surprise, and after three referrals your next box is on us.</p>" },
+    { "type": "text", "id": "sample_link", "label": "Example referral link", "default": "mysteryflowerbox.com/r/your-name" },
+    { "type": "text", "id": "note", "label": "Note", "default": "Sign in to your account to get your personal link and track your rewards." },
+    { "type": "text", "id": "cta_text", "label": "Button label", "default": "Open my referral dashboard" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "checkbox", "id": "reverse", "label": "Image on the right", "default": true },
+    { "type": "select", "id": "background", "label": "Background", "default": "sand",
+      "options": [{ "value": "cream", "label": "Cream" }, { "value": "white", "label": "White" }, { "value": "blush", "label": "Blush" }, { "value": "sand", "label": "Sand" }, { "value": "mist", "label": "Mist" }] }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "default": "3" },
+        { "type": "text", "id": "label", "label": "Label", "default": "referrals to a free box" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Refer a friend" }]
+}
+{% endschema %}

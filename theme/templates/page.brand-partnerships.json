@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "hero": { "type": "page-hero", "settings": { "eyebrow": "Brand partnerships", "heading": "Put your brand inside a moment people film", "text": "<p>Advertising, sampling, sponsored gifts and competitions — inside a box that gets opened, photographed and shared.</p>", "cta_text": "Start an enquiry", "cta_link": "#enquiry", "background": "blush" } },
+    "stats": {
+      "type": "stats-band",
+      "settings": { "eyebrow": "The audience", "heading": "Why brands come to us", "subheading": "<p>A highly engaged, predominantly female, gift-minded audience who open our boxes on camera.</p>", "background": "mist" },
+      "blocks": {
+        "n1": { "type": "stat", "settings": { "value": "50k+", "label": "boxes opened each month" } },
+        "n2": { "type": "stat", "settings": { "value": "40k+", "label": "opted-in first-party records" } },
+        "n3": { "type": "stat", "settings": { "value": "62%", "label": "repeat purchase rate" } },
+        "n4": { "type": "stat", "settings": { "value": "1 in 4", "label": "share their unboxing" } }
+      },
+      "block_order": ["n1", "n2", "n3", "n4"]
+    },
+    "offers": {
+      "type": "partner-offers",
+      "settings": { "eyebrow": "What you can buy", "heading": "Four ways to be in the box", "subheading": "<p>Everything is measurable. You get scan data, redemption rates and campaign reporting.</p>", "columns": 4, "cta_text": "", "background": "white" },
+      "blocks": {
+        "o1": { "type": "offer", "settings": { "partner": "Sampling", "heading": "Product sampling", "text": "Your sample in every box for a chosen week, with redemption tracked by QR code." } },
+        "o2": { "type": "offer", "settings": { "partner": "Advertising", "heading": "Printed inserts", "text": "A beautifully printed card in the box, plus placement on the partner offers page." } },
+        "o3": { "type": "offer", "settings": { "partner": "Sponsorship", "heading": "Sponsored Golden Ticket", "text": "Attach your brand to the moment someone wins something brilliant." } },
+        "o4": { "type": "offer", "settings": { "partner": "Competitions", "heading": "Co-branded competition", "text": "We run it, you supply the prize, and we share the opted-in entries." } }
+      },
+      "block_order": ["o1", "o2", "o3", "o4"]
+    },
+    "enquiry": {
+      "type": "enquiry-form",
+      "settings": { "eyebrow": "Partner enquiry", "heading": "Tell us about your campaign", "subheading": "<p>The more you tell us, the faster we can come back with a rate and available slots.</p>", "subject": "Brand partnership enquiry", "cta_text": "Send enquiry", "success_heading": "Thank you — we have your campaign brief.", "success_text": "Our commercial team will come back within one working day with availability and a rate card.", "note": "We'll send the media kit and rate card with our reply.", "background": "cream" },
+      "blocks": {
+        "f1": { "type": "select", "settings": { "label": "What are you interested in", "options": "Product sampling, Printed advertising, Sponsored gift, Competition, Something else", "required": true } },
+        "f2": { "type": "select", "settings": { "label": "Expected campaign volume", "options": "Under 10,000 boxes, 10,000–50,000 boxes, 50,000–250,000 boxes, 250,000+ boxes", "required": true } },
+        "f3": { "type": "text", "settings": { "label": "Target audience", "placeholder": "e.g. women 25–45, UK, gift buyers", "required": true } },
+        "f4": { "type": "text", "settings": { "label": "Timing", "placeholder": "e.g. Mother's Day 2027", "required": true } },
+        "f5": { "type": "text", "settings": { "label": "Sample dimensions and weight", "placeholder": "e.g. 80 × 50 × 12mm, 30g" } },
+        "f6": { "type": "select", "settings": { "label": "Budget", "options": "Under £5,000, £5,000–£25,000, £25,000–£100,000, £100,000+", "required": true } },
+        "f7": { "type": "textarea", "settings": { "label": "Campaign objectives" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6", "f7"]
+    },
+    "cases": {
+      "type": "grower-stories",
+      "settings": { "eyebrow": "Case studies", "heading": "Campaigns that worked", "columns": 3, "background": "meadow" },
+      "blocks": {
+        "c1": { "type": "grower", "settings": { "fallback": "mfb-grower-1", "name": "Sampling campaign", "region": "FMCG · 40,000 boxes", "text": "A single-week sampling drop delivered a 31% QR redemption rate and 4,200 new email records." } },
+        "c2": { "type": "grower", "settings": { "fallback": "mfb-grower-2", "name": "Sponsored Golden Ticket", "region": "Travel brand · 3 months", "text": "Sponsoring the prize put the brand into every winner announcement, email and social post." } },
+        "c3": { "type": "grower", "settings": { "fallback": "mfb-grower-3", "name": "Co-branded competition", "region": "Home & lifestyle · 6 weeks", "text": "Shared entry data delivered 11,000 opted-in records at a fraction of paid social cost." } }
+      },
+      "block_order": ["c1", "c2", "c3"]
+    },
+    "cta": { "type": "cta-band", "settings": { "heading": "Want the media kit?", "text": "<p>Send an enquiry and we'll attach the full rate card and audience data.</p>", "cta_text": "Start an enquiry", "cta_link": "#enquiry", "background": "raspberry" } }
+  },
+  "order": ["hero", "stats", "offers", "enquiry", "cases", "cta"]
+}

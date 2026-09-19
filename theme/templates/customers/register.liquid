@@ -1,0 +1,23 @@
+<section class="section section--cream">
+  <div class="page-width" style="max-width:520px">
+    <h1>Create an account</h1>
+    <p class="lede">Track orders, manage your subscription, change your no-list and collect loyalty points.</p>
+    <div class="form-card">
+      {% form 'create_customer' %}
+        {%- if form.errors -%}<div class="form-error">{{ form.errors | default_errors }}</div>{%- endif -%}
+        <div class="grid grid--2">
+          <label class="field"><span>First name</span><input type="text" name="customer[first_name]" autocomplete="given-name"></label>
+          <label class="field"><span>Last name</span><input type="text" name="customer[last_name]" autocomplete="family-name"></label>
+        </div>
+        <label class="field"><span>Email</span><input type="email" name="customer[email]" autocomplete="email" required></label>
+        <label class="field"><span>Password</span><input type="password" name="customer[password]" autocomplete="new-password" required></label>
+        <label class="field" style="display:flex;gap:10px;align-items:flex-start">
+          <input type="checkbox" name="customer[accepts_marketing]" value="true" style="width:auto;margin-top:6px">
+          <span style="margin:0;font-weight:400;font-size:.92rem">Email me about new boxes, competitions and Golden Tickets. Unsubscribe any time.</span>
+        </label>
+        <button class="btn btn--full" type="submit">Create account</button>
+      {% endform %}
+    </div>
+    <p class="center" style="margin-top:22px">Already have one? <a href="{{ routes.account_login_url }}">Sign in</a></p>
+  </div>
+</section>

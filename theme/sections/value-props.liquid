@@ -1,0 +1,47 @@
+<section class="section section--{{ section.settings.background }}">
+  <div class="page-width">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, subheading: section.settings.subheading %}
+    <div class="grid grid--{{ section.settings.columns }}">
+      {%- for block in section.blocks -%}
+        <div class="feature" {{ block.shopify_attributes }} data-reveal>
+          <div class="feature__icon">{% render 'mfb-icon', icon: block.settings.icon %}</div>
+          <h3>{{ block.settings.heading }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Why Mystery Flower Box",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why Mystery Flower Box" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Not a florist. A very good surprise." },
+    { "type": "richtext", "id": "subheading", "label": "Subheading" },
+    { "type": "range", "id": "columns", "min": 2, "max": 4, "step": 1, "label": "Columns", "default": 4 },
+    { "type": "select", "id": "background", "label": "Background", "default": "cream",
+      "options": [{ "value": "cream", "label": "Cream" }, { "value": "white", "label": "White" }, { "value": "blush", "label": "Blush" }, { "value": "mist", "label": "Mist" }, { "value": "meadow", "label": "Meadow" }] }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "default": "sparkle",
+          "options": [
+            { "value": "sparkle", "label": "Sparkle" }, { "value": "recycle", "label": "Recycle" },
+            { "value": "leaf", "label": "Leaf" }, { "value": "truck", "label": "Delivery" },
+            { "value": "gift", "label": "Gift" }, { "value": "heart", "label": "Heart" },
+            { "value": "flower", "label": "Flower" }, { "value": "qr", "label": "QR code" },
+            { "value": "pin", "label": "Map pin" }, { "value": "lock", "label": "Secure" }
+          ] },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Surplus, rescued" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "We buy what Dutch growers cannot sell through the usual channels, so beautiful stems never go to waste." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Why Mystery Flower Box" }]
+}
+{% endschema %}

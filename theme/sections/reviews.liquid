@@ -1,0 +1,62 @@
+<section class="section section--{{ section.settings.background }}">
+  <div class="page-width">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading %}
+
+    <div class="rating-summary">
+      <span class="rating-summary__score">{{ section.settings.score }}</span>
+      {% render 'stars', rating: section.settings.score %}
+      <span class="muted">Based on {{ section.settings.count }} verified reviews</span>
+      {%- if section.settings.source != blank -%}
+        <span class="pill pill--white">{{ section.settings.source }}</span>
+      {%- endif -%}
+    </div>
+
+    <div class="grid grid--{{ section.settings.columns }}">
+      {%- for block in section.blocks -%}
+        <article class="review-card" {{ block.shopify_attributes }} data-reveal>
+          {% render 'stars', rating: block.settings.rating %}
+          <div class="review-card__title">{{ block.settings.title }}</div>
+          <p class="review-card__body">{{ block.settings.body }}</p>
+          <div class="review-card__meta">
+            <strong>{{ block.settings.name }}</strong>
+            {%- if block.settings.verified -%}
+              <span class="review-card__verified">{% render 'mfb-icon', icon: 'check' %} Verified</span>
+            {%- endif -%}
+            <span>{{ block.settings.date }}</span>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Review wall",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Reviews" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What people say once they have opened it" },
+    { "type": "text", "id": "score", "label": "Average score", "default": "4.8" },
+    { "type": "text", "id": "count", "label": "Review count", "default": "1,284" },
+    { "type": "text", "id": "source", "label": "Source badge", "default": "Trustpilot & Judge.me" },
+    { "type": "range", "id": "columns", "min": 2, "max": 4, "step": 1, "label": "Columns", "default": 3 },
+    { "type": "select", "id": "background", "label": "Background", "default": "cream",
+      "options": [{ "value": "cream", "label": "Cream" }, { "value": "white", "label": "White" }, { "value": "blush", "label": "Blush" }, { "value": "mist", "label": "Mist" }] }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "range", "id": "rating", "min": 1, "max": 5, "step": 1, "label": "Rating", "default": 5 },
+        { "type": "text", "id": "title", "label": "Title", "default": "Better than the florist down the road" },
+        { "type": "textarea", "id": "body", "label": "Review", "default": "Twice the stems for half the money and I genuinely look forward to the delivery." },
+        { "type": "text", "id": "name", "label": "Name", "default": "Rachel T." },
+        { "type": "text", "id": "date", "label": "Date", "default": "2 weeks ago" },
+        { "type": "checkbox", "id": "verified", "label": "Verified purchase", "default": true }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Review wall" }]
+}
+{% endschema %}

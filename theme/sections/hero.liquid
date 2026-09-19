@@ -1,0 +1,96 @@
+<section class="hero">
+  <div class="page-width hero__grid">
+    <div>
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h1 class="hero__title">{{ section.settings.heading }}</h1>
+      <div class="lede">{{ section.settings.subheading }}</div>
+
+      <div class="hero__badges">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'badge' -%}
+            <span class="pill {{ block.settings.style }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="cluster" style="margin-top:28px">
+        {%- if section.settings.cta_text != blank -%}
+          <a class="btn btn--lg" href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}">{{ section.settings.cta_text }}</a>
+        {%- endif -%}
+        {%- if section.settings.cta2_text != blank -%}
+          <a class="btn btn--secondary btn--lg" href="{{ section.settings.cta2_link }}">{{ section.settings.cta2_text }}</a>
+        {%- endif -%}
+      </div>
+
+      <div class="hero__ticker">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'point' -%}
+            <span {{ block.shopify_attributes }}>{% render 'mfb-icon', icon: block.settings.icon %} {{ block.settings.text }}</span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="hero__media">
+      {%- if section.settings.video_url != blank -%}
+        <div class="shape-card" style="aspect-ratio:4/3">
+          {{ section.settings.video_url | external_video_tag: loading: 'lazy' }}
+        </div>
+      {%- elsif section.settings.image != blank -%}
+        <img src="{{ section.settings.image | image_url: width: 1600 }}" alt="{{ section.settings.heading | escape }}"
+             width="1600" height="1280" fetchpriority="high">
+      {%- else -%}
+        <img src="{{ 'mfb-hero.svg' | asset_url }}" alt="A Mystery Flower Box bursting with surprise blooms"
+             width="1600" height="1280" fetchpriority="high">
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Rescued Dutch blooms · £35 a box" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What's in your Mystery Flower Box?" },
+    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>Customers don't pick flowers. They buy the surprise. Tell us what to leave out, and we'll do the rest.</p>" },
+    { "type": "text", "id": "cta_text", "label": "Primary button", "default": "Surprise Me!" },
+    { "type": "url", "id": "cta_link", "label": "Primary link" },
+    { "type": "text", "id": "cta2_text", "label": "Secondary button", "default": "How it works" },
+    { "type": "url", "id": "cta2_link", "label": "Secondary link" },
+    { "type": "image_picker", "id": "image", "label": "Hero image" },
+    { "type": "video_url", "id": "video_url", "label": "Hero video", "accept": ["youtube", "vimeo"] }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Free UK delivery" },
+        { "type": "select", "id": "style", "label": "Colour", "default": "pill",
+          "options": [
+            { "value": "pill", "label": "Hydrangea" },
+            { "value": "pill pill--sun", "label": "Sunflower" },
+            { "value": "pill pill--violet", "label": "Forget-me-not" },
+            { "value": "pill pill--turf", "label": "Turf" },
+            { "value": "pill pill--rasp", "label": "Raspberry" }
+          ] }
+      ]
+    },
+    {
+      "type": "point",
+      "name": "Ticker point",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Packed fresh every morning" },
+        { "type": "select", "id": "icon", "label": "Icon", "default": "leaf",
+          "options": [
+            { "value": "leaf", "label": "Leaf" }, { "value": "truck", "label": "Delivery" },
+            { "value": "gift", "label": "Gift" }, { "value": "sparkle", "label": "Sparkle" },
+            { "value": "recycle", "label": "Recycle" }, { "value": "heart", "label": "Heart" }
+          ] }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

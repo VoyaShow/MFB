@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "hero": { "type": "page-hero", "settings": { "eyebrow": "Help", "heading": "Frequently asked questions", "text": "<p>Everything about boxes, exclusions, delivery, subscriptions and the rest. Still stuck? We answer emails quickly.</p>", "cta_text": "Contact us", "cta_link": "/pages/contact", "background": "blush" } },
+    "faq_boxes": {
+      "type": "faq",
+      "settings": { "eyebrow": "The boxes", "heading": "About the boxes", "background": "white" },
+      "blocks": {
+        "q1": { "type": "qa", "settings": { "question": "Can I choose what's in my box?", "answer": "<p>No — that's the surprise, and it's how we keep the price at £35. What you can do is tell us what to leave out on the box builder.</p>" } },
+        "q2": { "type": "qa", "settings": { "question": "What can I exclude?", "answer": "<p>Up to three colours and four varieties, plus household needs like pet-friendly, low pollen, no strong scent or low light. Excluding everything would leave us nothing to pack, so there's a sensible cap.</p>" } },
+        "q3": { "type": "qa", "settings": { "question": "How many stems do I get?", "answer": "<p>Typically 15–25 stems depending on the varieties available. Plant boxes contain two to four plants.</p>" } },
+        "q4": { "type": "qa", "settings": { "question": "Can I get a clue before it arrives?", "answer": "<p>Yes. Ask for the main colour or one variety to be revealed the day before delivery — or keep it completely sealed.</p>" } },
+        "q5": { "type": "qa", "settings": { "question": "Why is it so much cheaper than a florist?", "answer": "<p>Because we buy surplus stock direct from Dutch growers, and because you're not paying for someone to arrange it or for a shop window.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5"]
+    },
+    "faq_delivery": {
+      "type": "faq",
+      "settings": { "eyebrow": "Delivery", "heading": "Getting it to you", "background": "cream" },
+      "blocks": {
+        "q1": { "type": "qa", "settings": { "question": "How much is delivery?", "answer": "<p>Free across mainland UK. Highlands, islands and Northern Ireland may take an extra day.</p>" } },
+        "q2": { "type": "qa", "settings": { "question": "Can I choose the delivery date?", "answer": "<p>Yes — pick your preferred date on the box builder. Order before 2pm for next-day dispatch, Monday to Friday.</p>" } },
+        "q3": { "type": "qa", "settings": { "question": "What if I'm not home?", "answer": "<p>Boxes are designed to fit through a standard letterbox where possible, and left in your safe place otherwise.</p>" } },
+        "q4": { "type": "qa", "settings": { "question": "My flowers arrived damaged.", "answer": "<p>Send us a photo within 48 hours and we'll replace the box or refund you. Our 7-day freshness promise covers any stem that doesn't last the week.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"]
+    },
+    "faq_account": {
+      "type": "faq",
+      "settings": { "eyebrow": "Subscriptions, points & data", "heading": "Your account", "background": "white" },
+      "blocks": {
+        "q1": { "type": "qa", "settings": { "question": "How do I pause or cancel?", "answer": "<p>From your account, in two clicks. No phone call, no retention chat.</p>" } },
+        "q2": { "type": "qa", "settings": { "question": "How do loyalty points work?", "answer": "<p>One point per pound spent, plus points for reviews, gallery uploads and referrals. 250 points is £5 off; 1,000 is a free box.</p>" } },
+        "q3": { "type": "qa", "settings": { "question": "I bought a box in a supermarket — can I register it?", "answer": "<p>Yes. Scan the QR code on the box or use the form on the Find a Box page. You'll get your care guide, loyalty points and a competition entry.</p>" } },
+        "q4": { "type": "qa", "settings": { "question": "What do you do with my data?", "answer": "<p>We use it to send your order, and — only if you've said yes — to email you about boxes and competitions. We never sell it. See our privacy policy for the detail, and unsubscribe whenever you like.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"]
+    },
+    "cta": { "type": "cta-band", "settings": { "heading": "Still have a question?", "text": "<p>We answer every email, usually the same day.</p>", "cta_text": "Contact us", "cta_link": "/pages/contact", "background": "peony" } }
+  },
+  "order": ["hero", "faq_boxes", "faq_delivery", "faq_account", "cta"]
+}

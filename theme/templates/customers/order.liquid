@@ -1,0 +1,43 @@
+<section class="section section--cream">
+  <div class="page-width">
+    <nav class="breadcrumbs"><a href="{{ routes.account_url }}">Account</a> / <span>{{ order.name }}</span></nav>
+    <h1>{{ order.name }}</h1>
+    <p class="muted">Placed {{ order.created_at | date: '%-d %B %Y' }} · {{ order.financial_status_label }} · {{ order.fulfillment_status_label }}</p>
+
+    <table class="cart-table" style="margin-top:24px">
+      <thead><tr><th>Item</th><th>Qty</th><th style="text-align:right">Total</th></tr></thead>
+      <tbody>
+        {%- for line in order.line_items -%}
+          <tr>
+            <td>
+              <strong>{{ line.title }}</strong>
+              {%- if line.properties.size > 0 -%}
+                <ul class="cart-item__props">
+                  {%- for prop in line.properties -%}
+                    {%- unless prop.last == blank or prop.first contains '_' -%}
+                      <li><strong>{{ prop.first }}:</strong> {{ prop.last }}</li>
+                    {%- endunless -%}
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </td>
+            <td>{{ line.quantity }}</td>
+            <td style="text-align:right">{{ line.final_line_price | money }}</td>
+          </tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+
+    <div class="cart-footer">
+      <div>
+        <p class="muted small">Subtotal {{ order.subtotal_price | money }} · Shipping {{ order.shipping_price | money }}</p>
+        <div class="cart-total">{{ order.total_price | money }}</div>
+      </div>
+    </div>
+
+    <div class="grid grid--2" style="margin-top:34px">
+      <div class="form-card"><h3>Shipping address</h3><p class="small">{{ order.shipping_address | format_address }}</p></div>
+      <div class="form-card"><h3>Billing address</h3><p class="small">{{ order.billing_address | format_address }}</p></div>
+    </div>
+  </div>
+</section>

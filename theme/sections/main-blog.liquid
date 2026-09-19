@@ -1,0 +1,58 @@
+<section class="section section--cream">
+  <div class="page-width">
+    <header class="section-head">
+      <span class="eyebrow">From the packhouse</span>
+      <h1>{{ blog.title }}</h1>
+    </header>
+
+    {%- if blog.all_tags.size > 0 -%}
+      <div class="tabs">
+        <a class="tab-btn" href="{{ blog.url }}" {% unless current_tags %}aria-selected="true"{% endunless %}>All</a>
+        {%- for tag in blog.all_tags -%}
+          <a class="tab-btn" href="{{ blog.url }}/tagged/{{ tag | handle }}"
+             {% if current_tags contains tag %}aria-selected="true"{% endif %}>{{ tag }}</a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if blog.articles.size > 0 -%}
+      <div class="grid grid--3">
+        {%- for article in blog.articles -%}
+          <article class="article-card">
+            {%- if article.image -%}
+              <img src="{{ article.image | image_url: width: 800 }}" alt="{{ article.image.alt | default: article.title | escape }}" width="800" height="500" loading="lazy">
+            {%- else -%}
+              {%- assign idx = forloop.index0 | modulo: 12 | plus: 1 -%}
+              {%- capture fallback -%}mfb-gallery-{% if idx < 10 %}0{% endif %}{{ idx }}.svg{%- endcapture -%}
+              <img src="{{ fallback | asset_url }}" alt="" width="900" height="900" loading="lazy">
+            {%- endif -%}
+            <div class="article-card__body">
+              <span class="article-card__date">{{ article.published_at | date: '%-d %B %Y' }}</span>
+              <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+              <p class="muted">{{ article.excerpt_or_content | strip_html | truncatewords: 24 }}</p>
+              <a class="btn btn--sm btn--secondary" href="{{ article.url }}" style="align-self:flex-start;margin-top:auto">Read more</a>
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+        <nav class="pagination" aria-label="Pagination">
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>
+            {%- else -%}<span class="is-current">{{ part.title }}</span>{%- endif -%}
+          {%- endfor -%}
+        </nav>
+      {%- endif -%}
+    {%- else -%}
+      <div class="empty-state">
+        {% render 'mfb-icon', icon: 'flower' %}
+        <h3>No stories yet</h3>
+        <p class="muted">Publish an article and it will land here.</p>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{ "name": "Blog" }
+{% endschema %}

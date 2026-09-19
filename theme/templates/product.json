@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "inside": { "type": "accordion", "settings": { "heading": "What's inside?", "content": "<p>A generous surprise mix of seasonal stems, rescued from Dutch growers the day before it reaches you. Expect 15–25 stems depending on variety, plus a flower care card and — sometimes — a partner treat or a Golden Ticket.</p>" } },
+        "delivery": { "type": "accordion", "settings": { "heading": "Delivery & freshness", "content": "<p>Free UK delivery. Order before 2pm for next-day dispatch, Monday to Friday. Every box travels in water-retaining wrap and carries our 7-day freshness promise — if it isn't perfect, we replace it.</p>" } },
+        "exclusions": { "type": "accordion", "settings": { "heading": "How exclusions work", "content": "<p>You can't choose what goes in — that's the surprise. But you can tell us what to leave out: up to three colours and four varieties, plus household needs like pet-friendly or low pollen. Our packhouse sees your list before your box is filled.</p>" } },
+        "care": { "type": "accordion", "settings": { "heading": "Looking after your flowers", "content": "<p>Trim 2cm off each stem at an angle, use the flower food provided, keep out of direct sunlight and change the water every two days. Scan the QR code in your box for a full care video.</p>" } }
+      },
+      "block_order": ["inside", "delivery", "exclusions", "care"],
+      "settings": {
+        "price_note": "One clear price. Free UK delivery.",
+        "rating": 4.8,
+        "review_count": "1,284",
+        "related_collection": "shop"
+      }
+    }
+  },
+  "order": ["main"]
+}

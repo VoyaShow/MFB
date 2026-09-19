@@ -1,0 +1,51 @@
+<section class="section section--{{ section.settings.background }}">
+  <div class="page-width">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, subheading: section.settings.subheading %}
+    <div class="grid grid--{{ section.settings.columns }}">
+      {%- for block in section.blocks -%}
+        <div class="feature" {{ block.shopify_attributes }} data-reveal>
+          <span class="pill pill--sun">{{ block.settings.partner }}</span>
+          <h3 style="margin-top:14px">{{ block.settings.heading }}</h3>
+          <p>{{ block.settings.text }}</p>
+          {%- if block.settings.code != blank -%}
+            <button class="btn btn--sm btn--secondary" type="button" data-copy="{{ block.settings.code }}">Copy code {{ block.settings.code }}</button>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.cta_text != blank -%}
+      <div class="cluster cluster--center" style="margin-top:40px">
+        <a class="btn btn--secondary" href="{{ section.settings.cta_link }}">{{ section.settings.cta_text }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Partner offers",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Inside your box" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Partner treats and samples" },
+    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>Every box carries a surprise from a brand we actually like. No junk, no filler.</p>" },
+    { "type": "range", "id": "columns", "min": 2, "max": 4, "step": 1, "label": "Columns", "default": 3 },
+    { "type": "text", "id": "cta_text", "label": "Button label", "default": "Partner with us" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+    { "type": "select", "id": "background", "label": "Background", "default": "white",
+      "options": [{ "value": "cream", "label": "Cream" }, { "value": "white", "label": "White" }, { "value": "blush", "label": "Blush" }, { "value": "sand", "label": "Sand" }] }
+  ],
+  "blocks": [
+    {
+      "type": "offer",
+      "name": "Offer",
+      "settings": [
+        { "type": "text", "id": "partner", "label": "Partner name", "default": "Partner brand" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "A little something extra" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Found in selected boxes this month." },
+        { "type": "text", "id": "code", "label": "Discount code" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Partner offers" }]
+}
+{% endschema %}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Gift card &ndash; {{ shop.name }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ 'mfb.css' | asset_url }}">
+    {{ content_for_header }}
+  </head>
+  <body>
+    <section class="section section--blush" style="min-height:100vh">
+      <div class="page-width center" style="max-width:560px">
+        <img src="{{ 'mfb-logo.png' | asset_url }}" alt="{{ shop.name | escape }}" width="420" height="204" style="margin:0 auto 24px;max-width:260px">
+        <h1>A surprise, on someone else</h1>
+        <div class="form-card">
+          <div class="cart-total">{{ gift_card.balance | money }}</div>
+          <p class="muted small">Gift card code</p>
+          <p style="font-family:var(--font-display);font-size:1.4rem;letter-spacing:.06em">{{ gift_card.code | format_code }}</p>
+          {%- if gift_card.expires_on -%}
+            <p class="muted small">Expires {{ gift_card.expires_on | date: '%-d %B %Y' }}</p>
+          {%- endif -%}
+          <a class="btn btn--full" href="{{ shop.url }}">Spend it</a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

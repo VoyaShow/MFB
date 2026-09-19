@@ -1,0 +1,25 @@
+<section class="section section--cream">
+  <div class="page-width" style="max-width:520px">
+    <h1>Sign in</h1>
+    <div class="form-card">
+      {% form 'customer_login' %}
+        {%- if form.errors -%}<div class="form-error">{{ form.errors | default_errors }}</div>{%- endif -%}
+        <label class="field"><span>Email</span><input type="email" name="customer[email]" autocomplete="email" required></label>
+        <label class="field"><span>Password</span><input type="password" name="customer[password]" autocomplete="current-password" required></label>
+        <button class="btn btn--full" type="submit">Sign in</button>
+        <p class="form-note"><a href="#recover" onclick="document.getElementById('recover').hidden=false;return false">Forgotten your password?</a></p>
+      {% endform %}
+
+      <div id="recover" hidden style="margin-top:20px;border-top:1px solid var(--line);padding-top:20px">
+        {% form 'recover_customer_password' %}
+          {%- if form.posted_successfully? -%}
+            <div class="form-success">Check your inbox for a reset link.</div>
+          {%- endif -%}
+          <label class="field"><span>Reset your password</span><input type="email" name="email" placeholder="you@example.com"></label>
+          <button class="btn btn--secondary btn--full" type="submit">Send reset link</button>
+        {% endform %}
+      </div>
+    </div>
+    <p class="center" style="margin-top:22px">New here? <a href="{{ routes.account_register_url }}">Create an account</a></p>
+  </div>
+</section>

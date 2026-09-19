@@ -1,0 +1,27 @@
+{
+  "general": {
+    "meta": { "tags": "Tagged \"{{ tags }}\"", "page": "Page {{ page }}" },
+    "search": { "placeholder": "Search", "submit": "Search" },
+    "accessibility": { "skip_to_text": "Skip to content" },
+    "404": { "title": "This box is empty", "subtext": "We cannot find that page." },
+    "password_page": { "login_form_heading": "Enter the store", "login_password_button": "Enter" }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add my surprise",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity"
+    }
+  },
+  "cart": {
+    "general": { "title": "Your basket", "empty": "Your basket is empty", "checkout": "Checkout", "update": "Update" }
+  },
+  "customer": {
+    "account": { "title": "Account", "details": "Account details", "view_addresses": "View addresses" },
+    "login": { "title": "Sign in", "email": "Email", "password": "Password", "sign_in": "Sign in" },
+    "register": { "title": "Create an account", "submit": "Create account" },
+    "orders": { "title": "Order history", "order_number": "Order", "date": "Date", "total": "Total" }
+  },
+  "blogs": { "article": { "read_more": "Read more", "comments": "Comments" } }
+}

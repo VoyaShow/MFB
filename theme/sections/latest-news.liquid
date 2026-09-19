@@ -1,0 +1,45 @@
+{%- assign blog = blogs[section.settings.blog] -%}
+<section class="section section--{{ section.settings.background }}">
+  <div class="page-width">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading %}
+    {%- if blog.articles_count > 0 -%}
+      <div class="grid grid--3">
+        {%- for article in blog.articles limit: 3 -%}
+          <article class="article-card" data-reveal>
+            {%- if article.image -%}
+              <img src="{{ article.image | image_url: width: 800 }}" alt="{{ article.image.alt | default: article.title | escape }}" width="800" height="500" loading="lazy">
+            {%- else -%}
+              {%- assign idx = forloop.index0 | modulo: 12 | plus: 1 -%}
+              {%- capture fallback -%}mfb-gallery-{% if idx < 10 %}0{% endif %}{{ idx }}.svg{%- endcapture -%}
+              <img src="{{ fallback | asset_url }}" alt="" width="900" height="900" loading="lazy">
+            {%- endif -%}
+            <div class="article-card__body">
+              <span class="article-card__date">{{ article.published_at | date: '%-d %B %Y' }}</span>
+              <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+              <p class="muted">{{ article.excerpt_or_content | strip_html | truncatewords: 22 }}</p>
+              <a class="btn btn--sm btn--secondary" href="{{ article.url }}" style="align-self:flex-start;margin-top:auto">Read more</a>
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+      <div class="cluster cluster--center" style="margin-top:38px">
+        <a class="btn btn--secondary" href="{{ blog.url }}">All news</a>
+      </div>
+    {%- else -%}
+      <p class="center muted">Publish articles to your blog and they will appear here.</p>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Latest news",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "From the packhouse" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Latest news" },
+    { "type": "blog", "id": "blog", "label": "Blog" },
+    { "type": "select", "id": "background", "label": "Background", "default": "white",
+      "options": [{ "value": "cream", "label": "Cream" }, { "value": "white", "label": "White" }, { "value": "blush", "label": "Blush" }, { "value": "mist", "label": "Mist" }] }
+  ],
+  "presets": [{ "name": "Latest news" }]
+}
+{% endschema %}

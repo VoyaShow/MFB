@@ -1,0 +1,101 @@
+{%- comment -%}
+  A configurable lead-capture form used by Corporate gifting and Brand partnerships.
+{%- endcomment -%}
+<section class="section section--{{ section.settings.background }}">
+  <div class="page-width page-width--narrow">
+    {% render 'section-head', eyebrow: section.settings.eyebrow, heading: section.settings.heading, subheading: section.settings.subheading %}
+
+    <div class="form-card">
+      {% form 'contact', id: section.id %}
+        {%- if form.posted_successfully? -%}
+          <div class="form-success">
+            <strong>{{ section.settings.success_heading }}</strong><br>{{ section.settings.success_text }}
+          </div>
+        {%- else -%}
+          {%- if form.errors -%}
+            <div class="form-error">{{ form.errors | default_errors }}</div>
+          {%- endif -%}
+          <input type="hidden" name="contact[subject]" value="{{ section.settings.subject }}">
+
+          <div class="grid grid--2">
+            <label class="field"><span>Your name *</span><input type="text" name="contact[name]" required></label>
+            <label class="field"><span>Work email *</span><input type="email" name="contact[email]" required></label>
+            <label class="field"><span>Company *</span><input type="text" name="contact[company]" required></label>
+            <label class="field"><span>Phone</span><input type="tel" name="contact[phone]"></label>
+          </div>
+
+          {%- for block in section.blocks -%}
+            {%- assign field_name = block.settings.label | handle | prepend: 'contact[' | append: ']' -%}
+            {%- case block.type -%}
+              {%- when 'select' -%}
+                <label class="field" {{ block.shopify_attributes }}>
+                  <span>{{ block.settings.label }}{% if block.settings.required %} *{% endif %}</span>
+                  <select name="{{ field_name }}" {% if block.settings.required %}required{% endif %}>
+                    <option value="">Please choose…</option>
+                    {%- assign opts = block.settings.options | split: ',' -%}
+                    {%- for opt in opts -%}<option>{{ opt | strip }}</option>{%- endfor -%}
+                  </select>
+                </label>
+              {%- when 'textarea' -%}
+                <label class="field" {{ block.shopify_attributes }}>
+                  <span>{{ block.settings.label }}{% if block.settings.required %} *{% endif %}</span>
+                  <textarea name="{{ field_name }}" rows="5" placeholder="{{ block.settings.placeholder }}"
+                            {% if block.settings.required %}required{% endif %}></textarea>
+                </label>
+              {%- else -%}
+                <label class="field" {{ block.shopify_attributes }}>
+                  <span>{{ block.settings.label }}{% if block.settings.required %} *{% endif %}</span>
+                  <input type="text" name="{{ field_name }}" placeholder="{{ block.settings.placeholder }}"
+                         {% if block.settings.required %}required{% endif %}>
+                </label>
+            {%- endcase -%}
+          {%- endfor -%}
+
+          <label class="field" style="display:flex;gap:10px;align-items:flex-start">
+            <input type="checkbox" name="contact[consent]" value="Yes" style="width:auto;margin-top:6px" required>
+            <span style="margin:0;font-weight:400;font-size:.92rem">I am happy for Mystery Flower Box to contact me about this enquiry. *</span>
+          </label>
+
+          <button class="btn btn--lg" type="submit">{{ section.settings.cta_text }}</button>
+          <p class="form-note">{{ section.settings.note }}</p>
+        {%- endif -%}
+      {% endform %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Enquiry form",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Tell us what you need" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Start an enquiry" },
+    { "type": "richtext", "id": "subheading", "label": "Subheading" },
+    { "type": "text", "id": "subject", "label": "Email subject", "default": "Website enquiry" },
+    { "type": "text", "id": "cta_text", "label": "Button label", "default": "Send enquiry" },
+    { "type": "text", "id": "note", "label": "Note", "default": "We reply to every enquiry within one working day." },
+    { "type": "text", "id": "success_heading", "label": "Success heading", "default": "Thank you — enquiry received." },
+    { "type": "text", "id": "success_text", "label": "Success text", "default": "A member of the commercial team will be in touch within one working day." },
+    { "type": "select", "id": "background", "label": "Background", "default": "cream",
+      "options": [{ "value": "cream", "label": "Cream" }, { "value": "white", "label": "White" }, { "value": "blush", "label": "Blush" }, { "value": "mist", "label": "Mist" }] }
+  ],
+  "blocks": [
+    { "type": "text", "name": "Text field", "settings": [
+      { "type": "text", "id": "label", "label": "Label", "default": "Timing" },
+      { "type": "text", "id": "placeholder", "label": "Placeholder" },
+      { "type": "checkbox", "id": "required", "label": "Required", "default": false }
+    ] },
+    { "type": "select", "name": "Dropdown", "settings": [
+      { "type": "text", "id": "label", "label": "Label", "default": "Budget" },
+      { "type": "textarea", "id": "options", "label": "Options (comma separated)", "default": "Under £1,000, £1,000–£5,000, £5,000–£25,000, £25,000+" },
+      { "type": "checkbox", "id": "required", "label": "Required", "default": false }
+    ] },
+    { "type": "textarea", "name": "Long answer", "settings": [
+      { "type": "text", "id": "label", "label": "Label", "default": "Tell us more" },
+      { "type": "text", "id": "placeholder", "label": "Placeholder" },
+      { "type": "checkbox", "id": "required", "label": "Required", "default": false }
+    ] }
+  ],
+  "presets": [{ "name": "Enquiry form" }]
+}
+{% endschema %}

@@ -1,0 +1,73 @@
+<header class="site-header">
+  <div class="page-width site-header__inner">
+    <a class="site-header__logo" href="{{ routes.root_url }}">
+      {%- if section.settings.logo != blank -%}
+        <img src="{{ section.settings.logo | image_url: width: 600 }}"
+             alt="{{ shop.name | escape }}"
+             width="600" height="{{ 600 | divided_by: section.settings.logo.aspect_ratio | round }}"
+             style="--logo-w: {{ section.settings.logo_width }}px">
+      {%- else -%}
+        <img src="{{ 'mfb-logo.png' | asset_url }}" alt="{{ shop.name | escape }}"
+             width="600" height="292" style="--logo-w: {{ section.settings.logo_width }}px">
+      {%- endif -%}
+    </a>
+
+    <nav class="site-nav" aria-label="Main">
+      {%- for link in linklists[section.settings.menu].links -%}
+        <div class="site-nav__item">
+          <a class="site-nav__link" href="{{ link.url }}"
+             {% if link.links.size > 0 %}aria-haspopup="true"{% endif %}
+             {% if link.active or link.child_active %}aria-current="page"{% endif %}>
+            {{ link.title }}
+            {%- if link.links.size > 0 %} {% render 'mfb-icon', icon: 'chevron' %}{% endif -%}
+          </a>
+          {%- if link.links.size > 0 -%}
+            <div class="site-nav__panel">
+              {%- for child in link.links -%}
+                <a href="{{ child.url }}">{{ child.title }}</a>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </nav>
+
+    <div class="header-actions">
+      {%- if section.settings.cta_text != blank -%}
+        <a class="btn btn--sm" href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}">{{ section.settings.cta_text }}</a>
+      {%- endif -%}
+      <a class="icon-btn" href="{{ routes.search_url }}" aria-label="Search">{% render 'mfb-icon', icon: 'search' %}</a>
+      <a class="icon-btn" href="{% if shop.customer_accounts_enabled %}{{ routes.account_url }}{% else %}{{ routes.root_url }}{% endif %}" aria-label="Account">{% render 'mfb-icon', icon: 'user' %}</a>
+      <a class="icon-btn" href="{{ routes.cart_url }}" aria-label="Basket, {{ cart.item_count }} items">
+        {% render 'mfb-icon', icon: 'cart' %}
+        {%- if cart.item_count > 0 -%}<span class="cart-count">{{ cart.item_count }}</span>{%- endif -%}
+      </a>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-expanded="false"
+              aria-controls="mobile-nav" aria-label="Menu">
+        {% render 'mfb-icon', icon: 'menu' %}
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobile-nav">
+    {%- for link in linklists[section.settings.menu].links -%}
+      <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- for child in link.links -%}
+        <a class="mobile-nav__child" href="{{ child.url }}">{{ child.title }}</a>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "range", "id": "logo_width", "min": 110, "max": 260, "step": 10, "unit": "px", "label": "Logo width", "default": 170 },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "text", "id": "cta_text", "label": "Button label", "default": "Surprise Me!" },
+    { "type": "url", "id": "cta_link", "label": "Button link" }
+  ]
+}
+{% endschema %}

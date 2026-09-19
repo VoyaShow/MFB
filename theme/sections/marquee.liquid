@@ -1,0 +1,17 @@
+{%- assign items = section.settings.text | split: '·' -%}
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>{% for i in items %}{{ i | strip }} ✿ {% endfor %}</span>
+    <span>{% for i in items %}{{ i | strip }} ✿ {% endfor %}</span>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Marquee",
+  "settings": [
+    { "type": "textarea", "id": "text", "label": "Items (separate with ·)",
+      "default": "Surplus flowers rescued · One clear price · Tell us what to leave out · Golden Tickets inside · Supporting Dutch growers" }
+  ],
+  "presets": [{ "name": "Marquee" }]
+}
+{% endschema %}

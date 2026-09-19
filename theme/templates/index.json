@@ -1,0 +1,241 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "b1": { "type": "badge", "settings": { "text": "Every box £35", "style": "pill" } },
+        "b2": { "type": "badge", "settings": { "text": "Free UK delivery", "style": "pill pill--sun" } },
+        "b3": { "type": "badge", "settings": { "text": "Tell us what to leave out", "style": "pill pill--violet" } },
+        "p1": { "type": "point", "settings": { "icon": "recycle", "text": "Surplus Dutch blooms rescued" } },
+        "p2": { "type": "point", "settings": { "icon": "truck", "text": "Next-day delivery" } },
+        "p3": { "type": "point", "settings": { "icon": "gift", "text": "Golden Tickets inside" } }
+      },
+      "block_order": ["b1", "b2", "b3", "p1", "p2", "p3"],
+      "settings": {
+        "eyebrow": "Rescued Dutch blooms · £35 a box",
+        "heading": "What's in your Mystery Flower Box?",
+        "subheading": "<p>Customers don't pick flowers. They buy the surprise. Choose your box, tell us what to leave out, and let our growers do the rest.</p>",
+        "cta_text": "Surprise Me!",
+        "cta_link": "/collections/shop",
+        "cta2_text": "How it works",
+        "cta2_link": "/pages/how-it-works"
+      }
+    },
+
+    "marquee": { "type": "marquee", "settings": { "text": "Surplus flowers rescued · One clear price · Tell us what to leave out · Golden Tickets inside · Supporting Dutch growers · Never the same box twice" } },
+
+    "products": {
+      "type": "three-products",
+      "settings": {
+        "eyebrow": "This week's mystery boxes",
+        "heading": "One price. Three boxes. Endless surprises.",
+        "subheading": "<p>No endless bouquets to scroll through. Pick your box, set your exclusions on the box builder, and open the lid to find out.</p>",
+        "collection": "shop",
+        "limit": 3,
+        "footnote": "Every box is £35. Always.",
+        "background": "white"
+      }
+    },
+
+    "why": {
+      "type": "value-props",
+      "settings": { "eyebrow": "Why Mystery Flower Box", "heading": "Not a florist. A very good surprise.", "columns": 4, "background": "cream" },
+      "blocks": {
+        "a": { "type": "feature", "settings": { "icon": "recycle", "heading": "Surplus, rescued", "text": "We buy what Dutch growers can't sell through the usual channels, so beautiful stems never go to waste." } },
+        "b": { "type": "feature", "settings": { "icon": "sparkle", "heading": "Twice the flowers", "text": "Because nobody is paying for a florist's window, your £35 buys far more than £35 usually does." } },
+        "c": { "type": "feature", "settings": { "icon": "heart", "heading": "Your rules respected", "text": "Allergic to lilies? Cat at home? Can't stand orange? Tick it once and our packhouse works around it." } },
+        "d": { "type": "feature", "settings": { "icon": "gift", "heading": "Always a surprise", "text": "Never the same box twice — and one in every 250 hides a Golden Ticket." } }
+      },
+      "block_order": ["a", "b", "c", "d"]
+    },
+
+    "how": {
+      "type": "how-it-works",
+      "settings": { "eyebrow": "How it works", "heading": "Four steps to a very good day", "cta_text": "Build my box", "cta_link": "/collections/shop", "background": "white" },
+      "blocks": {
+        "s1": { "type": "step", "settings": { "heading": "Pick your box", "text": "Flowers, plants, or both. Every box is £35." } },
+        "s2": { "type": "step", "settings": { "heading": "Set your no-list", "text": "Tell us the colours and varieties to leave out — everything else stays secret." } },
+        "s3": { "type": "step", "settings": { "heading": "We pack it fresh", "text": "Our growers fill your box the morning it leaves us, working around your list." } },
+        "s4": { "type": "step", "settings": { "heading": "Open the lid", "text": "Film the moment, tag us, and you could land in the gallery — and the Golden Ticket draw." } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"]
+    },
+
+    "personalise": {
+      "type": "personalise",
+      "settings": {
+        "eyebrow": "Your box, your rules",
+        "heading": "Keep the surprise. Lose the lilies.",
+        "text": "<p>You don't choose what goes in — but you can tell us what to leave out. Allergies, pets, a colour you've never liked: tick it on the box builder and our growers pack around it. Everything else stays a total mystery.</p>",
+        "cta_text": "Build my box",
+        "cta_link": "/collections/shop",
+        "reverse": false,
+        "background": "blush"
+      },
+      "blocks": {
+        "c1": { "type": "chip", "settings": { "text": "No lilies", "swatch": "" } },
+        "c2": { "type": "chip", "settings": { "text": "No orange", "swatch": "#EDAD80" } },
+        "c3": { "type": "chip", "settings": { "text": "No red", "swatch": "#D5344B" } },
+        "c4": { "type": "chip", "settings": { "text": "No chrysanthemums", "swatch": "" } },
+        "c5": { "type": "chip", "settings": { "text": "Pet-friendly only", "swatch": "" } },
+        "c6": { "type": "chip", "settings": { "text": "Low pollen", "swatch": "" } },
+        "c7": { "type": "chip", "settings": { "text": "No strong scent", "swatch": "" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6", "c7"]
+    },
+
+    "reactions": {
+      "type": "reactions",
+      "settings": {
+        "eyebrow": "Real reactions",
+        "heading": "The moment the lid comes off",
+        "subheading": "<p>Thousands of unboxings, filmed on kitchen tables and doorsteps across the country.</p>",
+        "columns": 3,
+        "cta_text": "See the whole gallery",
+        "cta_link": "/pages/customer-gallery",
+        "background": "mist"
+      },
+      "blocks": {
+        "r1": { "type": "reaction", "settings": { "emoji": "😍", "rating": 5, "quote": "I actually squealed. My husband now thinks I've lost it — worth every penny.", "name": "Sophie M.", "location": "Manchester", "box": "Mystery Flower Box" } },
+        "r2": { "type": "reaction", "settings": { "emoji": "🤯", "rating": 5, "quote": "I ticked 'no lilies' because of the cat and they got it spot on. Twenty-three stems for £35.", "name": "Dan & Priya", "location": "Bristol", "box": "Mystery Flower & Plant Box" } },
+        "r3": { "type": "reaction", "settings": { "emoji": "🥹", "rating": 5, "quote": "Sent one to my mum for no reason. She rang me crying. Now it's a monthly thing.", "name": "Leanne K.", "location": "Glasgow", "box": "Mystery Flower Box" } }
+      },
+      "block_order": ["r1", "r2", "r3"]
+    },
+
+    "gallery": {
+      "type": "gallery",
+      "settings": {
+        "eyebrow": "Customer gallery",
+        "heading": "#MysteryFlowerBox",
+        "subheading": "<p>Real boxes, real homes, real reactions. Tag us and you could land on this wall — and in the Golden Ticket draw.</p>",
+        "show_filters": true,
+        "cta_text": "Upload your photo",
+        "cta_link": "/pages/customer-gallery",
+        "background": "white"
+      },
+      "blocks": {
+        "g1": { "type": "photo", "settings": { "name": "Jess", "location": "Leeds", "caption": "Third box and still smiling", "category": "In the home", "box_type": "Mystery Flower Box", "likes": "412", "comments": "23" } },
+        "g2": { "type": "photo", "settings": { "name": "Marcus", "location": "Cardiff", "caption": "Kitchen window upgrade", "category": "In the home", "box_type": "Mystery Plant Box", "likes": "298", "comments": "11" } },
+        "g3": { "type": "photo", "settings": { "name": "Amira", "location": "London", "caption": "Doorstep unboxing, 8am", "category": "Unboxings", "box_type": "Mystery Flower Box", "likes": "1,204", "comments": "88" } },
+        "g4": { "type": "photo", "settings": { "name": "Tom", "location": "Sheffield", "caption": "Desk therapy", "category": "In the home", "box_type": "Mystery Flower Box", "likes": "176", "comments": "9" } },
+        "g5": { "type": "photo", "settings": { "name": "Nadia", "location": "Belfast", "caption": "Her 40th, and she had no idea", "category": "Occasions", "box_type": "Mystery Flower & Plant Box", "likes": "846", "comments": "51" } },
+        "g6": { "type": "photo", "settings": { "name": "Ollie", "location": "Brighton", "caption": "The shelf is officially full", "category": "Plants", "box_type": "Mystery Plant Box", "likes": "523", "comments": "34" } },
+        "g7": { "type": "photo", "settings": { "name": "Priya", "location": "Birmingham", "caption": "Golden Ticket! A year of boxes", "category": "Golden Tickets", "box_type": "Mystery Flower Box", "likes": "2,108", "comments": "167" } },
+        "g8": { "type": "photo", "settings": { "name": "Cara", "location": "Norwich", "caption": "Mother's Day sorted", "category": "Occasions", "box_type": "Mystery Flower Box", "likes": "689", "comments": "40" } }
+      },
+      "block_order": ["g1", "g2", "g3", "g4", "g5", "g6", "g7", "g8"]
+    },
+
+    "reviews": {
+      "type": "reviews",
+      "settings": { "eyebrow": "Reviews", "heading": "What people say once they've opened it", "score": "4.8", "count": "1,284", "source": "Trustpilot & Judge.me", "columns": 3, "background": "cream" },
+      "blocks": {
+        "v1": { "type": "review", "settings": { "rating": 5, "title": "Better than the florist down the road", "body": "Twice the stems for half the money and I genuinely look forward to the delivery. The 'leave out' list is a brilliant touch.", "name": "Rachel T.", "date": "2 weeks ago", "verified": true } },
+        "v2": { "type": "review", "settings": { "rating": 5, "title": "They actually read the exclusions", "body": "I'm allergic to lilies and asked for none. Six boxes in, not a single lily. That's all I needed.", "name": "Gareth P.", "date": "1 month ago", "verified": true } },
+        "v3": { "type": "review", "settings": { "rating": 4, "title": "The fun is the not knowing", "body": "One box was a bit green-heavy for me, but the next two were stunning. That's the deal and I'm here for it.", "name": "Meera S.", "date": "3 weeks ago", "verified": true } },
+        "v4": { "type": "review", "settings": { "rating": 5, "title": "Lasted eleven days", "body": "Arrived cold, wrapped properly, and still going nearly two weeks later. Cannot fault it.", "name": "Jon H.", "date": "5 days ago", "verified": true } },
+        "v5": { "type": "review", "settings": { "rating": 5, "title": "Best £35 in my month", "body": "It's become the thing I look forward to. Cheaper than a takeaway and it lasts a fortnight.", "name": "Bex L.", "date": "1 week ago", "verified": true } },
+        "v6": { "type": "review", "settings": { "rating": 5, "title": "Gifted four, kept one", "body": "Sent them to my whole team. Three of them have subscribed since.", "name": "Anna D.", "date": "2 months ago", "verified": true } }
+      },
+      "block_order": ["v1", "v2", "v3", "v4", "v5", "v6"]
+    },
+
+    "blooming": {
+      "type": "whats-blooming",
+      "settings": { "eyebrow": "Live from the packhouse", "heading": "What's blooming today?", "subheading": "<p>A peek at the varieties we're packing this week. We'll never tell you exactly what lands in your box.</p>", "background": "meadow" },
+      "blocks": {
+        "b1": { "type": "bloom", "settings": { "fallback": "mfb-blooming-peony", "name": "Avalanche roses", "note": "Aalsmeer · packed Tuesday" } },
+        "b2": { "type": "bloom", "settings": { "fallback": "mfb-blooming-sunflower", "name": "Strong Gold tulips", "note": "Westland · packed Monday" } },
+        "b3": { "type": "bloom", "settings": { "fallback": "mfb-blooming-forget-me-not", "name": "Lisianthus", "note": "Rijnsburg · packed Wednesday" } },
+        "b4": { "type": "bloom", "settings": { "fallback": "mfb-blooming-genum", "name": "Germini mix", "note": "Naaldwijk · packed today" } },
+        "b5": { "type": "bloom", "settings": { "fallback": "mfb-blooming-turf", "name": "Eucalyptus cinerea", "note": "Foliage · every box" } },
+        "b6": { "type": "bloom", "settings": { "fallback": "mfb-blooming-hydrangea", "name": "Alstroemeria", "note": "Aalsmeer · packed Thursday" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5", "b6"]
+    },
+
+    "golden": {
+      "type": "golden-ticket",
+      "settings": { "eyebrow": "Golden Ticket tracker", "heading": "One in every 250 boxes hides a Golden Ticket", "text": "<p>Free boxes for a year, weekend breaks, grower tours and limited-edition blooms. Winners announced here and in your inbox.</p>", "cta_text": "See the prize list", "cta_link": "/pages/competitions", "background": "peony" },
+      "blocks": {
+        "w1": { "type": "winner", "settings": { "emoji": "🎟️", "prize": "A year of free boxes", "winner": "Priya, Birmingham — last Friday" } },
+        "w2": { "type": "winner", "settings": { "emoji": "🚐", "prize": "Grower tour for two, Holland", "winner": "Sam, Newcastle — this month" } },
+        "w3": { "type": "winner", "settings": { "emoji": "💐", "prize": "Limited-edition peony box", "winner": "Kelly, Southampton — last week" } }
+      },
+      "block_order": ["w1", "w2", "w3"]
+    },
+
+    "plans": {
+      "type": "subscription-plans",
+      "settings": { "eyebrow": "Subscriptions", "heading": "A surprise on repeat", "subheading": "<p>Pause, skip, upgrade or cancel yourself from your account — no emails, no phone calls.</p>", "footnote": "<p>Every plan includes free UK delivery, double loyalty points and first refusal on limited boxes.</p>", "background": "blush" },
+      "blocks": {
+        "p1": { "type": "plan", "settings": { "name": "Weekly", "price": "£35", "cadence": "per box, every week", "perks": "Free UK delivery\nPause or skip any time\nDouble loyalty points\nFirst access to limited boxes", "cta": "Start weekly", "link": "/collections/shop", "featured": false } },
+        "p2": { "type": "plan", "settings": { "name": "Fortnightly", "price": "£35", "cadence": "per box, every two weeks", "perks": "Free UK delivery\nPause or skip any time\nDouble loyalty points\nMost popular rhythm for a busy house", "cta": "Start fortnightly", "link": "/collections/shop", "featured": true } },
+        "p3": { "type": "plan", "settings": { "name": "Monthly", "price": "£35", "cadence": "per box, every month", "perks": "Free UK delivery\nPause or skip any time\nDouble loyalty points\nA monthly treat, no commitment", "cta": "Start monthly", "link": "/collections/shop", "featured": false } },
+        "p4": { "type": "plan", "settings": { "name": "Gift a subscription", "price": "From £99", "cadence": "3, 6 or 12 boxes, prepaid", "perks": "Delivered to them, billed to you\nPersonal message in the first box\nNothing to cancel later\nPerfect for birthdays and thank-yous", "cta": "Gift a plan", "link": "/collections/shop", "featured": false } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"]
+    },
+
+    "referral": {
+      "type": "referral",
+      "settings": { "eyebrow": "Refer a friend", "heading": "Give £10, get a free box", "text": "<p>Share your link. Your friend gets £10 off their first surprise, and after three referrals your next box is on us.</p>", "sample_link": "mysteryflowerbox.com/r/your-name", "cta_text": "Open my referral dashboard", "cta_link": "/pages/refer-a-friend", "reverse": true, "background": "sand" },
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "value": "£10", "label": "off for your friend" } },
+        "s2": { "type": "stat", "settings": { "value": "3", "label": "referrals to a free box" } },
+        "s3": { "type": "stat", "settings": { "value": "18k", "label": "boxes given free so far" } },
+        "s4": { "type": "stat", "settings": { "value": "∞", "label": "referrals allowed" } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"]
+    },
+
+    "competition": {
+      "type": "competition",
+      "settings": { "eyebrow": "This month's competition", "heading": "Win a year of Mystery Flower Boxes", "text": "<p>One winner, twelve months of surprises, zero effort. Enter once and you're in every monthly draw.</p>", "closes_at": "2026-12-31T23:59:59", "competition_tag": "comp-year-of-flowers", "cta_text": "Enter the draw", "background": "mist" }
+    },
+
+    "partners": {
+      "type": "partner-offers",
+      "settings": { "eyebrow": "Inside your box", "heading": "Partner treats and samples", "subheading": "<p>Every box carries a surprise from a brand we actually like. No junk, no filler.</p>", "columns": 3, "cta_text": "Partner with us", "cta_link": "/pages/brand-partnerships", "background": "white" },
+      "blocks": {
+        "o1": { "type": "offer", "settings": { "partner": "Featured partner", "heading": "A little something extra", "text": "Found in selected boxes this month — a sample, a voucher or a full-size treat." } },
+        "o2": { "type": "offer", "settings": { "partner": "Sampling slot", "heading": "Put your product in 50,000 homes", "text": "Our boxes are opened, filmed and shared. That's a very good place to be." } },
+        "o3": { "type": "offer", "settings": { "partner": "Sponsored gift", "heading": "Sponsor a Golden Ticket", "text": "Attach your brand to the moment someone wins something brilliant." } }
+      },
+      "block_order": ["o1", "o2", "o3"]
+    },
+
+    "instagram": {
+      "type": "instagram-feed",
+      "settings": { "eyebrow": "Follow along", "heading": "@mysteryflowerbox", "handle": "@mysteryflowerbox", "background": "cream" },
+      "blocks": {
+        "i1": { "type": "post", "settings": {} }, "i2": { "type": "post", "settings": {} },
+        "i3": { "type": "post", "settings": {} }, "i4": { "type": "post", "settings": {} },
+        "i5": { "type": "post", "settings": {} }, "i6": { "type": "post", "settings": {} }
+      },
+      "block_order": ["i1", "i2", "i3", "i4", "i5", "i6"]
+    },
+
+    "news": { "type": "latest-news", "settings": { "eyebrow": "From the packhouse", "heading": "Latest news", "blog": "news", "background": "white" } },
+
+    "investors": {
+      "type": "stats-band",
+      "settings": { "eyebrow": "Investors & partners", "heading": "The numbers behind the surprise", "subheading": "<p>A consumer platform built on first-party data, repeat purchase and multiple revenue streams.</p>", "cta_text": "Investor information", "cta_link": "/pages/investors", "background": "mist" },
+      "blocks": {
+        "n1": { "type": "stat", "settings": { "value": "1.2m", "label": "stems rescued to date" } },
+        "n2": { "type": "stat", "settings": { "value": "62%", "label": "repeat purchase rate" } },
+        "n3": { "type": "stat", "settings": { "value": "40k+", "label": "first-party records" } },
+        "n4": { "type": "stat", "settings": { "value": "4.8", "label": "average review score" } }
+      },
+      "block_order": ["n1", "n2", "n3", "n4"]
+    },
+
+    "newsletter": { "type": "newsletter", "settings": { "eyebrow": "Join 40,000 flower people", "heading": "10% off your first surprise", "text": "<p>Golden Ticket news, limited boxes and flower care tips. One email a week, never more.</p>", "cta_text": "Send my code", "background": "blush" } }
+  },
+  "order": [
+    "hero", "marquee", "products", "why", "how", "personalise", "reactions",
+    "gallery", "reviews", "blooming", "golden", "plans", "referral",
+    "competition", "partners", "instagram", "news", "investors", "newsletter"
+  ]
+}

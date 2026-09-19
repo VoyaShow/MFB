@@ -1,0 +1,57 @@
+<article class="section section--cream">
+  <div class="page-width page-width--narrow">
+    <nav class="breadcrumbs"><a href="{{ blog.url }}">{{ blog.title }}</a> / <span>{{ article.title }}</span></nav>
+    <span class="eyebrow">{{ article.published_at | date: '%-d %B %Y' }}{% if article.author != blank %} · {{ article.author }}{% endif %}</span>
+    <h1>{{ article.title }}</h1>
+
+    {%- if article.image -%}
+      <img src="{{ article.image | image_url: width: 1400 }}" alt="{{ article.image.alt | default: article.title | escape }}"
+           width="1400" height="800" style="border-radius:var(--radius-lg);margin:24px 0 32px">
+    {%- endif -%}
+
+    <div class="rte">{{ article.content }}</div>
+
+    {%- if article.tags.size > 0 -%}
+      <div class="cluster" style="margin-top:32px">
+        {%- for tag in article.tags -%}
+          <a class="pill" href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <div class="cluster" style="margin-top:36px">
+      {%- if blog.previous_article -%}<a class="btn btn--sm btn--secondary" href="{{ blog.previous_article }}">&larr; Previous</a>{%- endif -%}
+      {%- if blog.next_article -%}<a class="btn btn--sm btn--secondary" href="{{ blog.next_article }}">Next &rarr;</a>{%- endif -%}
+      <a class="btn btn--sm" href="{{ routes.all_products_collection_url }}">Surprise Me!</a>
+    </div>
+
+    {%- if blog.comments_enabled? -%}
+      <div style="margin-top:48px">
+        <h2>Comments</h2>
+        {%- for comment in article.comments -%}
+          <div class="review-card" style="margin-bottom:14px">
+            <div class="review-card__title">{{ comment.author }}</div>
+            <div class="review-card__body">{{ comment.content }}</div>
+            <div class="review-card__meta">{{ comment.created_at | date: '%-d %B %Y' }}</div>
+          </div>
+        {%- endfor -%}
+
+        {% form 'new_comment', article %}
+          {%- if form.posted_successfully? -%}
+            <div class="form-success">Thanks — your comment is awaiting moderation.</div>
+          {%- endif -%}
+          {%- if form.errors -%}<div class="form-error">{{ form.errors | default_errors }}</div>{%- endif -%}
+          <div class="grid grid--2">
+            <label class="field"><span>Name</span><input type="text" name="comment[author]" required></label>
+            <label class="field"><span>Email</span><input type="email" name="comment[email]" required></label>
+          </div>
+          <label class="field"><span>Comment</span><textarea name="comment[body]" rows="4" required></textarea></label>
+          <button class="btn" type="submit">Post comment</button>
+        {% endform %}
+      </div>
+    {%- endif -%}
+  </div>
+</article>
+{% schema %}
+{ "name": "Article" }
+{% endschema %}
